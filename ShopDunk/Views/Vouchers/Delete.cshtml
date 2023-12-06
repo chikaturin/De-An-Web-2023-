@@ -1,0 +1,46 @@
+﻿@model ShopDunk.Models.Voucher
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+    
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NameVoucher)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NameVoucher)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DiscountLevel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DiscountLevel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Expired_time)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Expired_time)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input style="border: 1px solid red; padding: 5px; text-decoration: none;border-radius:5px;color:black" type="submit" value="Xóa" class="bg-info.bg-gradient" />
+            <a class="bg-danger" href="@Url.Action("Index")" style="border: 1px solid red; padding: 5px; text-decoration: none;border-radius:5px;color:white">Danh sách</a>
+        </div>
+    }
+</div>

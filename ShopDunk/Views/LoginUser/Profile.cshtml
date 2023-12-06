@@ -1,0 +1,74 @@
+﻿@model ShopDunk.Models.Customer
+
+@{
+    ViewBag.Title = "UserProfile";
+    Layout = "~/Views/Shared/MasterLayout.cshtml";
+}
+<body>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="container w-50 mt-4 mb-4" style="border-radius:10px; background-color:white">
+            <div class="row align-items-start pt-3 p-auto">
+                <div class="col">
+                    Username: @Html.EditorFor(model => model.CusName, new { htmlAttributes = new { @class = "form-control" }})
+                    @Html.ValidationMessageFor(model => model.CusName, "", new { @class = "text-danger" })
+                </div>
+                <div class="col">
+                    E-mail:
+                    @Html.EditorFor(model => model.CusEmail, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.CusEmail, "", new { @class = "text-danger" })
+                </div>
+
+
+            </div>
+            <div class="row align-items-center">
+                <div class="col">
+                    Điện thoại:
+                    @Html.EditorFor(model => model.CusPhone, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.CusPhone, "", new { @class = "text-danger" })
+                </div>
+                <div class="col">
+                    Giới tính:@Html.DropDownListFor(model => model.Gender, new SelectList(
+                    new List<Object> { new { value = "True", text = "Nam" }, new { value = "False", text = "Nữ" } }, "value", "text"), new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
+                </div>
+
+            </div>
+
+            <div class="row align-items-end">
+                <div class="col">
+                    Ngày sinh:
+                    @Html.EditorFor(model => model.DateOfBirth, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
+                    @Html.ValidationMessageFor(model => model.DateOfBirth, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="col">
+                    Mật khẩu:
+                    @Html.EditorFor(model => model.CusPassword, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.CusPassword, "", new { @class = "text-danger" })
+                </div>
+
+            </div>
+            <br />
+            <div class="savebutton">
+                <a class="text-decoration-none" style="background-color: rgb(0,101,204); color: white; padding: 4px;border-radius: 5px;float:right; margin-right: 25px;" href="@Url.Action("purchases", "ShoppingCart")">Lịch sử mua hàng</a>
+                <br />
+                <input style="background-color: rgb(0,101,204);color:white; padding: 5px; text-decoration: none; border-radius: 5px;border:none;margin-bottom:5px;" type="submit" value="Lưu Thông Tin" class="bg-info.bg-gradient" />
+            </div>
+        </div>
+        <style>
+            .savebutton {
+                margin:10px 0;
+                display: flex;
+                justify-content: center;
+                margin-right:70px;
+                align-items: center;
+            }
+            body {
+                background-color: rgb(245,245,247);
+            }
+        </style>
+    }
+    </body>

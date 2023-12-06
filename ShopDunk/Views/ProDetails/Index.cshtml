@@ -1,0 +1,69 @@
+﻿ @model IEnumerable<ShopDunk.Models.ProDetail>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h1 style="color: darkgreen; padding: 10px; text-align: center; background-color: lightblue; border-radius: 10px; border: 2px solid lawngreen">CHI TIẾT SẢN PHẨM</h1>
+
+<table class="table">
+    <tr>
+        <th>
+            Tên Sản Phẩm
+        </th>
+        <th>
+            Tên Bộ Nhớ
+        </th>
+
+        <th>
+            Số Lượng Hàng Tồn
+        </th>
+
+        <th>
+            Mạng Kết Nối
+        </th>
+
+        <th>
+            Tên Màu
+        </th>
+
+
+        <th>
+            Tên Ưu Đãi
+        </th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr style="border:2px solid gray">
+            <td>
+                @Html.DisplayFor(modelItem => item.Product.ProName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Memory.NameMem)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RemainQuantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ConnectNetwork)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Color.ColorName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Voucher.NameVoucher)
+            </td>
+            <td>
+                <p><a href="@Url.Action("Edit", new { id = item.ProDeID })" style="border: 1px solid black; padding: 5px; text-decoration: none;border-radius:5px;color:black">Sửa</a></p>
+                <p><a href="@Url.Action("Details", new { id = item.ProDeID })" style="border: 1px solid black; padding: 5px; text-decoration: none; border-radius: 5px; color: black ">Chi tiết</a></p>
+                <p><a href="@Url.Action("Delete", new { id = item.ProDeID })" style="border: 1px solid black; padding: 5px; text-decoration: none; border-radius: 5px; color: black ">xóa</a></p>
+            </td>
+        </tr>
+    }
+
+</table>
+<p>
+    <a class="bg-danger" href="@Url.Action("Create")" style="border: 1px solid red; padding: 5px; text-decoration: none;border-radius:5px;color:white">Thêm mới</a>
+</p>

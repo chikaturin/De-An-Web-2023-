@@ -1,0 +1,61 @@
+﻿@using ShopDunk.Models;
+@using PagedList.Mvc;
+@model PagedList.PagedList<Product>
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/MasterLayout.cshtml";
+}
+<head>
+    <link rel="stylesheet" href="~/Content/Home.css" />
+</head>
+<style>
+    .MenuPage {
+        display: inline;
+    }
+
+    .pagination a {
+        color: black;
+        background-color: gray;
+        text-decoration: none;
+        width: 20px;
+        height: 20px;
+        color: white;
+        margin-left: 10px;
+        padding: 5px 10px;
+        border-radius: 5px;
+    }
+
+    .pagination .active a {
+        background-color: rgb(0, 102, 204);
+        width: 20px;
+        height: 20px;
+        color: white;
+        padding: 5px 10px;
+        border-radius: 5px;
+    }
+</style>
+<div class="container">
+    <div class="row d-flex">
+        @foreach (var pro in Model)
+        {
+            <div class="equipment mx-auto col-xl-3 col-lg-4 col-sm-6 bg-white" style="width:320px;border-radius: 10px; margin: 15px 5px; padding: 20px 10px 0 10px; align-items: baseline;">
+                <a class="row" href="@Url.Action("DetailProduct", "DetailProductVM", new { id = pro.ProID })">
+                    <img class="container img-fluid" src="@Url.Content(pro.ProImage)" style="width:250px;height:260px;" />
+                    <p class="name_equipment">@Html.DisplayFor(model => pro.ProName)</p>
+                    <p class="coin_of_equipment">
+                        <span style="color: rgb(0,102,204); font-weight: bold">
+                            @string.Format("{0:N0}", pro.PriceReduce) đ
+                        </span>
+                        <del style="padding:0 2px 0 15px;">
+                            @string.Format("{0:N0}", pro.Price) đ
+                        </del>
+                        -@Html.DisplayFor(model => pro.DiscountPercent)%
+                    </p>
+                </a>
+            </div>
+        }
+    </div>
+    <div class="MenuPage">
+        <div>@Html.PagedListPager(Model, Page => Url.Action("Search", new { Page = Page }))</div>
+    </div>
+</div>

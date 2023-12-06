@@ -1,0 +1,39 @@
+﻿@model ShopDunk.Models.Screen
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h1 style="color: darkgreen; padding: 10px;text-align:center; background-color: lawngreen; border-radius: 10px; border: 2px solid lawngreen">MÀN HÌNH ĐIỆN THOẠI</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            Tên màn hình thiết bị
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NameScr)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Resolution)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Resolution)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input style="border: 1px solid red; padding: 5px; text-decoration: none;border-radius:5px;color:black" type="submit" value="Xóa" class="bg-info.bg-gradient" />
+            <a class="bg-danger" href="@Url.Action("Index")" style="border: 1px solid red; padding: 5px; text-decoration: none;border-radius:5px;color:white">Danh sách</a>
+        </div>
+    }
+</div>

@@ -1,0 +1,908 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DBShopDunkModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AdminUser">
+          <Key>
+            <PropertyRef Name="Username" />
+          </Key>
+          <Property Name="Username" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Role" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Battery">
+          <Key>
+            <PropertyRef Name="BatID" />
+          </Key>
+          <Property Name="BatID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Storage" Type="int" Nullable="false" />
+          <Property Name="NameBat" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="CatID" />
+          </Key>
+          <Property Name="CatID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameCate" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Color">
+          <Key>
+            <PropertyRef Name="ColorID" />
+          </Key>
+          <Property Name="ColorID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ColorName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="RGB" Type="nchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="CusPhone" />
+          </Key>
+          <Property Name="CusPhone" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="CusPassword" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CusName" Type="nvarchar(max)" />
+          <Property Name="CusEmail" Type="nvarchar(max)" />
+          <Property Name="Address" Type="nvarchar(max)" />
+          <Property Name="Gender" Type="bit" />
+          <Property Name="DateOfBirth" Type="datetime" />
+        </EntityType>
+        <EntityType Name="FrontCamera">
+          <Key>
+            <PropertyRef Name="IDFCam" />
+          </Key>
+          <Property Name="IDFCam" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Resolution" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Memory">
+          <Key>
+            <PropertyRef Name="IDMem" />
+          </Key>
+          <Property Name="IDMem" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameMem" Type="nvarchar(max)" />
+          <Property Name="StorageMem" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="OrderID" />
+          </Key>
+          <Property Name="OrderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderDate" Type="date" />
+          <Property Name="CusPhone" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="AddressDeliverry" Type="nvarchar(max)" />
+          <Property Name="TotalValue" Type="float" />
+        </EntityType>
+        <EntityType Name="OrderDetail">
+          <Key>
+            <PropertyRef Name="OrderDetailID" />
+          </Key>
+          <Property Name="OrderDetailID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProSupID" Type="int" />
+          <Property Name="OrderID" Type="int" />
+          <Property Name="Quantity" Type="int" />
+          <Property Name="UnitPrice" Type="float" />
+        </EntityType>
+        <EntityType Name="ProDetail">
+          <Key>
+            <PropertyRef Name="ProDeID" />
+          </Key>
+          <Property Name="ProDeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProID" Type="int" Nullable="false" />
+          <Property Name="ColorID" Type="int" Nullable="false" />
+          <Property Name="RemainQuantity" Type="int" Nullable="false" />
+          <Property Name="SoldQuantity" Type="int" />
+          <Property Name="ViewQuantity" Type="int" />
+          <Property Name="IDVoucher" Type="int" />
+          <Property Name="ConnectNetwork" Type="nvarchar(max)" />
+          <Property Name="IDMemory" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ProID" />
+          </Key>
+          <Property Name="ProID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProName" Type="nvarchar(max)" />
+          <Property Name="CatID" Type="int" Nullable="false" />
+          <Property Name="ProImage" Type="nvarchar(max)" />
+          <Property Name="Price" Type="float" Nullable="false" />
+          <Property Name="DiscountPercent" Type="float" Nullable="false" />
+          <Property Name="CreatedDate" Type="date" Nullable="false" />
+          <Property Name="IDRCam" Type="int" Nullable="false" />
+          <Property Name="IDFCam" Type="int" Nullable="false" />
+          <Property Name="IDScreen" Type="int" Nullable="false" />
+          <Property Name="IDBatery" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RearCamera">
+          <Key>
+            <PropertyRef Name="IDRCam" />
+          </Key>
+          <Property Name="IDRCam" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Resolution" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Screen">
+          <Key>
+            <PropertyRef Name="IDScr" />
+          </Key>
+          <Property Name="IDScr" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameScr" Type="nvarchar(max)" />
+          <Property Name="Resolution" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Voucher">
+          <Key>
+            <PropertyRef Name="IDVoucher" />
+          </Key>
+          <Property Name="IDVoucher" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameVoucher" Type="nvarchar(max)" />
+          <Property Name="DiscountLevel" Type="float" />
+          <Property Name="Expired time" Type="datetime" />
+        </EntityType>
+        <Association Name="FK_Pro_Battery">
+          <End Role="Battery" Type="Self.Battery" Multiplicity="1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Battery">
+              <PropertyRef Name="BatID" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="IDBatery" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pro_Category">
+          <End Role="Category" Type="Self.Category" Multiplicity="1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="CatID" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="CatID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pro_Color">
+          <End Role="Color" Type="Self.Color" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ProDetail" Type="Self.ProDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Color">
+              <PropertyRef Name="ColorID" />
+            </Principal>
+            <Dependent Role="ProDetail">
+              <PropertyRef Name="ColorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pro_Customer">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CusPhone" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="CusPhone" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pro_FrontCamera">
+          <End Role="FrontCamera" Type="Self.FrontCamera" Multiplicity="1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FrontCamera">
+              <PropertyRef Name="IDFCam" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="IDFCam" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pro_Memory">
+          <End Role="Memory" Type="Self.Memory" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ProDetail" Type="Self.ProDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Memory">
+              <PropertyRef Name="IDMem" />
+            </Principal>
+            <Dependent Role="ProDetail">
+              <PropertyRef Name="IDMemory" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pro_Order">
+          <End Role="Order" Type="Self.Order" Multiplicity="0..1" />
+          <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="OrderID" />
+            </Principal>
+            <Dependent Role="OrderDetail">
+              <PropertyRef Name="OrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pro_ProDetail">
+          <End Role="ProDetail" Type="Self.ProDetail" Multiplicity="0..1" />
+          <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProDetail">
+              <PropertyRef Name="ProDeID" />
+            </Principal>
+            <Dependent Role="OrderDetail">
+              <PropertyRef Name="ProSupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pro_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ProDetail" Type="Self.ProDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProID" />
+            </Principal>
+            <Dependent Role="ProDetail">
+              <PropertyRef Name="ProID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pro_RearCamera">
+          <End Role="RearCamera" Type="Self.RearCamera" Multiplicity="1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RearCamera">
+              <PropertyRef Name="IDRCam" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="IDRCam" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pro_Screen">
+          <End Role="Screen" Type="Self.Screen" Multiplicity="1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Screen">
+              <PropertyRef Name="IDScr" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="IDScreen" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pro_Voucher">
+          <End Role="Voucher" Type="Self.Voucher" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ProDetail" Type="Self.ProDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Voucher">
+              <PropertyRef Name="IDVoucher" />
+            </Principal>
+            <Dependent Role="ProDetail">
+              <PropertyRef Name="IDVoucher" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DBShopDunkModelStoreContainer">
+          <EntitySet Name="AdminUser" EntityType="Self.AdminUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Battery" EntityType="Self.Battery" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Color" EntityType="Self.Color" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FrontCamera" EntityType="Self.FrontCamera" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Memory" EntityType="Self.Memory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderDetail" EntityType="Self.OrderDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProDetail" EntityType="Self.ProDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RearCamera" EntityType="Self.RearCamera" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Screen" EntityType="Self.Screen" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Voucher" EntityType="Self.Voucher" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Pro_Battery" Association="Self.FK_Pro_Battery">
+            <End Role="Battery" EntitySet="Battery" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pro_Category" Association="Self.FK_Pro_Category">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pro_Color" Association="Self.FK_Pro_Color">
+            <End Role="Color" EntitySet="Color" />
+            <End Role="ProDetail" EntitySet="ProDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pro_Customer" Association="Self.FK_Pro_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pro_FrontCamera" Association="Self.FK_Pro_FrontCamera">
+            <End Role="FrontCamera" EntitySet="FrontCamera" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pro_Memory" Association="Self.FK_Pro_Memory">
+            <End Role="Memory" EntitySet="Memory" />
+            <End Role="ProDetail" EntitySet="ProDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pro_Order" Association="Self.FK_Pro_Order">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="OrderDetail" EntitySet="OrderDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pro_ProDetail" Association="Self.FK_Pro_ProDetail">
+            <End Role="ProDetail" EntitySet="ProDetail" />
+            <End Role="OrderDetail" EntitySet="OrderDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pro_Product" Association="Self.FK_Pro_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="ProDetail" EntitySet="ProDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pro_RearCamera" Association="Self.FK_Pro_RearCamera">
+            <End Role="RearCamera" EntitySet="RearCamera" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pro_Screen" Association="Self.FK_Pro_Screen">
+            <End Role="Screen" EntitySet="Screen" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pro_Voucher" Association="Self.FK_Pro_Voucher">
+            <End Role="Voucher" EntitySet="Voucher" />
+            <End Role="ProDetail" EntitySet="ProDetail" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DBShopDunkModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AdminUser">
+          <Key>
+            <PropertyRef Name="Username" />
+          </Key>
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Role" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Battery">
+          <Key>
+            <PropertyRef Name="BatID" />
+          </Key>
+          <Property Name="BatID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Storage" Type="Int32" Nullable="false" />
+          <Property Name="NameBat" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Products" Relationship="Self.FK_Pro_Battery" FromRole="Battery" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="CatID" />
+          </Key>
+          <Property Name="CatID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameCate" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Products" Relationship="Self.FK_Pro_Category" FromRole="Category" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Color">
+          <Key>
+            <PropertyRef Name="ColorID" />
+          </Key>
+          <Property Name="ColorID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ColorName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RGB" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="ProDetails" Relationship="Self.FK_Pro_Color" FromRole="Color" ToRole="ProDetail" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="CusPhone" />
+          </Key>
+          <Property Name="CusPhone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CusPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CusName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CusEmail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Gender" Type="Boolean" />
+          <Property Name="DateOfBirth" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK_Pro_Customer" FromRole="Customer" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="FrontCamera">
+          <Key>
+            <PropertyRef Name="IDFCam" />
+          </Key>
+          <Property Name="IDFCam" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Resolution" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Products" Relationship="Self.FK_Pro_FrontCamera" FromRole="FrontCamera" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Memory">
+          <Key>
+            <PropertyRef Name="IDMem" />
+          </Key>
+          <Property Name="IDMem" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameMem" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="StorageMem" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ProDetails" Relationship="Self.FK_Pro_Memory" FromRole="Memory" ToRole="ProDetail" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="OrderID" />
+          </Key>
+          <Property Name="OrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderDate" Type="DateTime" Precision="0" />
+          <Property Name="CusPhone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AddressDeliverry" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TotalValue" Type="Double" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK_Pro_Customer" FromRole="Order" ToRole="Customer" />
+          <NavigationProperty Name="OrderDetails" Relationship="Self.FK_Pro_Order" FromRole="Order" ToRole="OrderDetail" />
+        </EntityType>
+        <EntityType Name="OrderDetail">
+          <Key>
+            <PropertyRef Name="OrderDetailID" />
+          </Key>
+          <Property Name="OrderDetailID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProSupID" Type="Int32" />
+          <Property Name="OrderID" Type="Int32" />
+          <Property Name="Quantity" Type="Int32" />
+          <Property Name="UnitPrice" Type="Double" />
+          <NavigationProperty Name="Order" Relationship="Self.FK_Pro_Order" FromRole="OrderDetail" ToRole="Order" />
+          <NavigationProperty Name="ProDetail" Relationship="Self.FK_Pro_ProDetail" FromRole="OrderDetail" ToRole="ProDetail" />
+        </EntityType>
+        <EntityType Name="ProDetail">
+          <Key>
+            <PropertyRef Name="ProDeID" />
+          </Key>
+          <Property Name="ProDeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProID" Type="Int32" Nullable="false" />
+          <Property Name="ColorID" Type="Int32" Nullable="false" />
+          <Property Name="RemainQuantity" Type="Int32" Nullable="false" />
+          <Property Name="SoldQuantity" Type="Int32" />
+          <Property Name="ViewQuantity" Type="Int32" />
+          <Property Name="IDVoucher" Type="Int32" />
+          <Property Name="ConnectNetwork" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IDMemory" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Color" Relationship="Self.FK_Pro_Color" FromRole="ProDetail" ToRole="Color" />
+          <NavigationProperty Name="Memory" Relationship="Self.FK_Pro_Memory" FromRole="ProDetail" ToRole="Memory" />
+          <NavigationProperty Name="OrderDetails" Relationship="Self.FK_Pro_ProDetail" FromRole="ProDetail" ToRole="OrderDetail" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_Pro_Product" FromRole="ProDetail" ToRole="Product" />
+          <NavigationProperty Name="Voucher" Relationship="Self.FK_Pro_Voucher" FromRole="ProDetail" ToRole="Voucher" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ProID" />
+          </Key>
+          <Property Name="ProID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CatID" Type="Int32" Nullable="false" />
+          <Property Name="ProImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Price" Type="Double" Nullable="false" />
+          <Property Name="DiscountPercent" Type="Double" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="IDRCam" Type="Int32" Nullable="false" />
+          <Property Name="IDFCam" Type="Int32" Nullable="false" />
+          <Property Name="IDScreen" Type="Int32" Nullable="false" />
+          <Property Name="IDBatery" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Battery" Relationship="Self.FK_Pro_Battery" FromRole="Product" ToRole="Battery" />
+          <NavigationProperty Name="Category" Relationship="Self.FK_Pro_Category" FromRole="Product" ToRole="Category" />
+          <NavigationProperty Name="FrontCamera" Relationship="Self.FK_Pro_FrontCamera" FromRole="Product" ToRole="FrontCamera" />
+          <NavigationProperty Name="ProDetails" Relationship="Self.FK_Pro_Product" FromRole="Product" ToRole="ProDetail" />
+          <NavigationProperty Name="RearCamera" Relationship="Self.FK_Pro_RearCamera" FromRole="Product" ToRole="RearCamera" />
+          <NavigationProperty Name="Screen" Relationship="Self.FK_Pro_Screen" FromRole="Product" ToRole="Screen" />
+        </EntityType>
+        <EntityType Name="RearCamera">
+          <Key>
+            <PropertyRef Name="IDRCam" />
+          </Key>
+          <Property Name="IDRCam" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Resolution" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Products" Relationship="Self.FK_Pro_RearCamera" FromRole="RearCamera" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Screen">
+          <Key>
+            <PropertyRef Name="IDScr" />
+          </Key>
+          <Property Name="IDScr" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameScr" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Resolution" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Products" Relationship="Self.FK_Pro_Screen" FromRole="Screen" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Voucher">
+          <Key>
+            <PropertyRef Name="IDVoucher" />
+          </Key>
+          <Property Name="IDVoucher" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameVoucher" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DiscountLevel" Type="Double" />
+          <Property Name="Expired_time" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="ProDetails" Relationship="Self.FK_Pro_Voucher" FromRole="Voucher" ToRole="ProDetail" />
+        </EntityType>
+        <Association Name="FK_Pro_Battery">
+          <End Role="Battery" Type="Self.Battery" Multiplicity="1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Battery">
+              <PropertyRef Name="BatID" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="IDBatery" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pro_Category">
+          <End Role="Category" Type="Self.Category" Multiplicity="1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="CatID" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="CatID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pro_Color">
+          <End Role="Color" Type="Self.Color" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ProDetail" Type="Self.ProDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Color">
+              <PropertyRef Name="ColorID" />
+            </Principal>
+            <Dependent Role="ProDetail">
+              <PropertyRef Name="ColorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pro_Customer">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CusPhone" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="CusPhone" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pro_FrontCamera">
+          <End Role="FrontCamera" Type="Self.FrontCamera" Multiplicity="1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FrontCamera">
+              <PropertyRef Name="IDFCam" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="IDFCam" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pro_Memory">
+          <End Role="Memory" Type="Self.Memory" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ProDetail" Type="Self.ProDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Memory">
+              <PropertyRef Name="IDMem" />
+            </Principal>
+            <Dependent Role="ProDetail">
+              <PropertyRef Name="IDMemory" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pro_Order">
+          <End Role="Order" Type="Self.Order" Multiplicity="0..1" />
+          <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="OrderID" />
+            </Principal>
+            <Dependent Role="OrderDetail">
+              <PropertyRef Name="OrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pro_ProDetail">
+          <End Role="ProDetail" Type="Self.ProDetail" Multiplicity="0..1" />
+          <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProDetail">
+              <PropertyRef Name="ProDeID" />
+            </Principal>
+            <Dependent Role="OrderDetail">
+              <PropertyRef Name="ProSupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pro_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ProDetail" Type="Self.ProDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProID" />
+            </Principal>
+            <Dependent Role="ProDetail">
+              <PropertyRef Name="ProID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pro_Voucher">
+          <End Role="Voucher" Type="Self.Voucher" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ProDetail" Type="Self.ProDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Voucher">
+              <PropertyRef Name="IDVoucher" />
+            </Principal>
+            <Dependent Role="ProDetail">
+              <PropertyRef Name="IDVoucher" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pro_RearCamera">
+          <End Role="RearCamera" Type="Self.RearCamera" Multiplicity="1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RearCamera">
+              <PropertyRef Name="IDRCam" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="IDRCam" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pro_Screen">
+          <End Role="Screen" Type="Self.Screen" Multiplicity="1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Screen">
+              <PropertyRef Name="IDScr" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="IDScreen" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DBShopDunkEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AdminUsers" EntityType="Self.AdminUser" />
+          <EntitySet Name="Batteries" EntityType="Self.Battery" />
+          <EntitySet Name="Categories" EntityType="Self.Category" />
+          <EntitySet Name="Colors" EntityType="Self.Color" />
+          <EntitySet Name="Customers" EntityType="Self.Customer" />
+          <EntitySet Name="FrontCameras" EntityType="Self.FrontCamera" />
+          <EntitySet Name="Memories" EntityType="Self.Memory" />
+          <EntitySet Name="Orders" EntityType="Self.Order" />
+          <EntitySet Name="OrderDetails" EntityType="Self.OrderDetail" />
+          <EntitySet Name="ProDetails" EntityType="Self.ProDetail" />
+          <EntitySet Name="Products" EntityType="Self.Product" />
+          <EntitySet Name="RearCameras" EntityType="Self.RearCamera" />
+          <EntitySet Name="Screens" EntityType="Self.Screen" />
+          <EntitySet Name="Vouchers" EntityType="Self.Voucher" />
+          <AssociationSet Name="FK_Pro_Battery" Association="Self.FK_Pro_Battery">
+            <End Role="Battery" EntitySet="Batteries" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pro_Category" Association="Self.FK_Pro_Category">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pro_Color" Association="Self.FK_Pro_Color">
+            <End Role="Color" EntitySet="Colors" />
+            <End Role="ProDetail" EntitySet="ProDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pro_Customer" Association="Self.FK_Pro_Customer">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pro_FrontCamera" Association="Self.FK_Pro_FrontCamera">
+            <End Role="FrontCamera" EntitySet="FrontCameras" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pro_Memory" Association="Self.FK_Pro_Memory">
+            <End Role="Memory" EntitySet="Memories" />
+            <End Role="ProDetail" EntitySet="ProDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pro_Order" Association="Self.FK_Pro_Order">
+            <End Role="Order" EntitySet="Orders" />
+            <End Role="OrderDetail" EntitySet="OrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pro_ProDetail" Association="Self.FK_Pro_ProDetail">
+            <End Role="ProDetail" EntitySet="ProDetails" />
+            <End Role="OrderDetail" EntitySet="OrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pro_Product" Association="Self.FK_Pro_Product">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="ProDetail" EntitySet="ProDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pro_Voucher" Association="Self.FK_Pro_Voucher">
+            <End Role="Voucher" EntitySet="Vouchers" />
+            <End Role="ProDetail" EntitySet="ProDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pro_RearCamera" Association="Self.FK_Pro_RearCamera">
+            <End Role="RearCamera" EntitySet="RearCameras" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pro_Screen" Association="Self.FK_Pro_Screen">
+            <End Role="Screen" EntitySet="Screens" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DBShopDunkModelStoreContainer" CdmEntityContainer="DBShopDunkEntities1">
+          <EntitySetMapping Name="AdminUsers">
+            <EntityTypeMapping TypeName="DBShopDunkModel.AdminUser">
+              <MappingFragment StoreEntitySet="AdminUser">
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Batteries">
+            <EntityTypeMapping TypeName="DBShopDunkModel.Battery">
+              <MappingFragment StoreEntitySet="Battery">
+                <ScalarProperty Name="BatID" ColumnName="BatID" />
+                <ScalarProperty Name="Storage" ColumnName="Storage" />
+                <ScalarProperty Name="NameBat" ColumnName="NameBat" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="DBShopDunkModel.Category">
+              <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="CatID" ColumnName="CatID" />
+                <ScalarProperty Name="NameCate" ColumnName="NameCate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Colors">
+            <EntityTypeMapping TypeName="DBShopDunkModel.Color">
+              <MappingFragment StoreEntitySet="Color">
+                <ScalarProperty Name="ColorID" ColumnName="ColorID" />
+                <ScalarProperty Name="ColorName" ColumnName="ColorName" />
+                <ScalarProperty Name="RGB" ColumnName="RGB" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="DBShopDunkModel.Customer">
+              <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="CusPhone" ColumnName="CusPhone" />
+                <ScalarProperty Name="CusPassword" ColumnName="CusPassword" />
+                <ScalarProperty Name="CusName" ColumnName="CusName" />
+                <ScalarProperty Name="CusEmail" ColumnName="CusEmail" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FrontCameras">
+            <EntityTypeMapping TypeName="DBShopDunkModel.FrontCamera">
+              <MappingFragment StoreEntitySet="FrontCamera">
+                <ScalarProperty Name="IDFCam" ColumnName="IDFCam" />
+                <ScalarProperty Name="Resolution" ColumnName="Resolution" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Memories">
+            <EntityTypeMapping TypeName="DBShopDunkModel.Memory">
+              <MappingFragment StoreEntitySet="Memory">
+                <ScalarProperty Name="IDMem" ColumnName="IDMem" />
+                <ScalarProperty Name="NameMem" ColumnName="NameMem" />
+                <ScalarProperty Name="StorageMem" ColumnName="StorageMem" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="DBShopDunkModel.Order">
+              <MappingFragment StoreEntitySet="Order">
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+                <ScalarProperty Name="CusPhone" ColumnName="CusPhone" />
+                <ScalarProperty Name="AddressDeliverry" ColumnName="AddressDeliverry" />
+                <ScalarProperty Name="TotalValue" ColumnName="TotalValue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderDetails">
+            <EntityTypeMapping TypeName="DBShopDunkModel.OrderDetail">
+              <MappingFragment StoreEntitySet="OrderDetail">
+                <ScalarProperty Name="OrderDetailID" ColumnName="OrderDetailID" />
+                <ScalarProperty Name="ProSupID" ColumnName="ProSupID" />
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProDetails">
+            <EntityTypeMapping TypeName="DBShopDunkModel.ProDetail">
+              <MappingFragment StoreEntitySet="ProDetail">
+                <ScalarProperty Name="ProDeID" ColumnName="ProDeID" />
+                <ScalarProperty Name="ProID" ColumnName="ProID" />
+                <ScalarProperty Name="ColorID" ColumnName="ColorID" />
+                <ScalarProperty Name="RemainQuantity" ColumnName="RemainQuantity" />
+                <ScalarProperty Name="SoldQuantity" ColumnName="SoldQuantity" />
+                <ScalarProperty Name="ViewQuantity" ColumnName="ViewQuantity" />
+                <ScalarProperty Name="IDVoucher" ColumnName="IDVoucher" />
+                <ScalarProperty Name="ConnectNetwork" ColumnName="ConnectNetwork" />
+                <ScalarProperty Name="IDMemory" ColumnName="IDMemory" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="DBShopDunkModel.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="ProID" ColumnName="ProID" />
+                <ScalarProperty Name="ProName" ColumnName="ProName" />
+                <ScalarProperty Name="CatID" ColumnName="CatID" />
+                <ScalarProperty Name="ProImage" ColumnName="ProImage" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="DiscountPercent" ColumnName="DiscountPercent" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="IDRCam" ColumnName="IDRCam" />
+                <ScalarProperty Name="IDFCam" ColumnName="IDFCam" />
+                <ScalarProperty Name="IDScreen" ColumnName="IDScreen" />
+                <ScalarProperty Name="IDBatery" ColumnName="IDBatery" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RearCameras">
+            <EntityTypeMapping TypeName="DBShopDunkModel.RearCamera">
+              <MappingFragment StoreEntitySet="RearCamera">
+                <ScalarProperty Name="IDRCam" ColumnName="IDRCam" />
+                <ScalarProperty Name="Resolution" ColumnName="Resolution" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Screens">
+            <EntityTypeMapping TypeName="DBShopDunkModel.Screen">
+              <MappingFragment StoreEntitySet="Screen">
+                <ScalarProperty Name="IDScr" ColumnName="IDScr" />
+                <ScalarProperty Name="NameScr" ColumnName="NameScr" />
+                <ScalarProperty Name="Resolution" ColumnName="Resolution" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vouchers">
+            <EntityTypeMapping TypeName="DBShopDunkModel.Voucher">
+              <MappingFragment StoreEntitySet="Voucher">
+                <ScalarProperty Name="IDVoucher" ColumnName="IDVoucher" />
+                <ScalarProperty Name="NameVoucher" ColumnName="NameVoucher" />
+                <ScalarProperty Name="DiscountLevel" ColumnName="DiscountLevel" />
+                <ScalarProperty Name="Expired_time" ColumnName="Expired time" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,210 @@
+﻿body {
+    margin: 0;
+    overflow-x: hidden;
+    width: 100%;
+}
+
+.above {
+    z-index: 999;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    height: fit-content;
+    background: rgb(81,81,84);
+}
+
+.above_header {
+    display: flex;
+    width: 100%;
+    height: fit-content;
+    background: rgb(81,81,84);
+}
+
+header {
+    color: rgb(210,210,215);
+    padding: 5px;
+    width: 15%;
+    text-align: center;
+    margin-top: 3px;
+}
+
+.header1 {
+    float: left;
+}
+
+header a img {
+    width: 170px;
+    height: 50px;
+}
+
+nav {
+    width: 70%;
+    text-decoration: none;
+    text-align: center;
+}
+    nav div {
+        min-width: 100px;
+        padding: 25px 20px;
+        height: max-content;
+        text-align: center;
+        color: rgb(210,210,215);
+    }
+
+        nav div a span{
+            font-size: 14px;
+            color: rgb(210,210,203);
+        }
+
+        nav div:hover {
+            background: rgb(81,81,84);
+            filter: brightness(120%);
+        }
+
+.header2-div {
+    float: left;
+    list-style: none;
+    display: flex;
+    width: 15%;
+    padding: 17px;
+}
+
+    .header2-div i {
+        padding: 0 10px;
+        text-align: center;
+        font-size: 20px;
+
+    }
+
+    .header2-div a i {
+        color: #d2d2d7;
+        padding: 0 10px;
+        text-align: center;
+        font-size: 20px;
+    }
+
+.User {
+    box-shadow: 2px 10px 10px 2px rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    position: absolute;
+    display: none;
+    background-color: rgb(255, 255, 255);
+    width: 250px;
+    right: -50px;
+    margin-top: 10px;
+    padding: 2px 20px;
+    height: fit-content;
+    border-radius: 10px;
+}
+
+.fa-user {
+    height: 100px;
+    position: relative;
+    z-index: 100;
+    width: 110px;
+    cursor: pointer;
+}
+#open_find{
+    cursor:pointer;
+}
+.fa-user:hover .User {
+    display: block;
+}
+
+    .fa-user:active .User {
+        display: block;
+    }
+
+.User p:hover {
+    color: rgb(1,100,204);
+}
+
+.User a {
+    text-decoration: none;
+}
+
+.User p {
+    text-align: left;
+    padding: 5px 10px;
+    color: black;
+    font-size: 17px;
+    font-family: 'Times New Roman', Times, serif;
+    border-bottom: 1px solid rgb(81,81,84);
+}
+
+.below_footer {
+    color: white;
+    background-color: rgb(29,29,31);
+}
+
+.row1 {
+    width: 100%;
+    border-bottom: 1px solid rgb(81,81,84);
+    display: inline-flex;
+}
+
+.col1 {
+    color: rgb(235,235,235);
+    padding: 25px 20px;
+    width: 30%;
+}
+
+.col2 {
+    color: rgb(210,210,215);
+    font-size: 13px;
+    width: 60%;
+    display: inline-flex;
+}
+
+h3 {
+    font-size: 20px;
+}
+
+.ul1 {
+    list-style: none;
+}
+
+col2 ul li {
+    color: rgb(134,134,139);
+}
+
+.row2 {
+    display: flex;
+    width: 100%;
+    color: rgb(210,210,215);
+}
+
+    .row2 p {
+        color: rgb(81,81,84);
+        font-size: 12px;
+        width: 60%;
+    }
+
+    .row2 a img {
+        width: 10%;
+        float: right;
+        padding: 20px;
+    }
+
+.Register {
+    z-index: 0;
+    width: 100%;
+    padding: 10px 0 30px;
+    margin-left:10px;
+    background-color: rgb(242,242,242);
+}
+
+        .Register input::placeholder {
+            font-size: 15px;
+        }
+
+    .Register span {
+        color: white;
+        margin: 0 -12%;
+        border-radius: 20px;
+        padding: 10px;
+        background-color: rgb(0,101,204);
+        z-index: 2;
+    }
+
+        .Register span:hover {
+            filter: brightness(120%)
+        }

@@ -1,0 +1,82 @@
+﻿@model ShopDunk.Models.Customer
+
+@{
+    ViewBag.Title = "RegisterCus";
+    Layout = "~/Views/Shared/MasterLayout.cshtml";
+}
+<head>
+    <link rel="stylesheet" href="~/css/Register.css" />
+    <script src="https://kit.fontawesome.com/3e21e075ef.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    @using (Html.BeginForm("RegisterCus", "LoginUser", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    { 
+        @Html.AntiForgeryToken()
+        if (ViewBag.ErrorRegister != null)
+        {
+            <p>@ViewBag.ErrorRegister</p>
+        }
+        <div class="main container mt-5 mb-5" >
+            <div class="row d-flex justify-content-center">
+                <div class="col-6"><img style="width:100%;height:500px;" src="https://shopdunk.com/images/uploaded/banner/VNU_M492_08%201.jpeg" /></div>
+                <div class="col-6">
+                    <div>
+                        @Html.LabelFor(model => model.CusName)
+                        @Html.TextBoxFor(model => model.CusName, new { @class = "form-control", maxlength = 10 })
+                        @Html.ValidationMessageFor(model => model.CusName, "", new { @class = "text-danger" })
+                    </div>
+                    <div>
+                        <br />
+                        <div class="col-md-10">
+                            @Html.DropDownListFor(model => model.Gender, new SelectList(
+                             new List<Object>{
+                                            new { value = "True", text = "Nam" },
+                                            new { value = "False", text = "Nữ" }
+                             },
+                             "value",
+                             "text"
+                             ), new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div>
+                        @Html.LabelFor(model => model.DateOfBirth)
+                        @Html.PasswordFor(model => model.DateOfBirth, new { @class = "form-control", type = "date" })
+                        @Html.ValidationMessageFor(model => model.DateOfBirth, "", new { @class = "text-danger" })
+                    </div>
+                    <div>
+                        @Html.LabelFor(model => model.CusEmail)
+                        @Html.TextBoxFor(model => model.CusEmail, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.CusEmail, "", new { @class = "text-danger" })
+                    </div>
+                    <div>
+                        @Html.LabelFor(model => model.CusPhone)
+                        @Html.TextBoxFor(model => model.CusPhone, new { @class = "form-control" ,maxlength=10})
+                        @Html.ValidationMessageFor(model => model.CusPhone, "", new { @class = "text-danger" })
+                    </div>
+                    <div>
+                        @Html.LabelFor(model => model.Address)
+                        @Html.TextBoxFor(model => model.Address, new { @class = "form-control", maxlength = 100})
+                        @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                    </div>
+                    <div>
+                        @Html.LabelFor(model => model.CusPassword)
+                        @Html.PasswordFor(model => model.CusPassword, new { @class = "form-control", @type = "password", maxlength = 20 })
+                        @Html.ValidationMessageFor(model => model.CusPassword, "", new { @class = "text-danger" })
+                    </div>
+                    <div>
+                        @Html.LabelFor(model => model.PasswordConfirm)
+                        @Html.PasswordFor(model => model.PasswordConfirm, new { @class = "form-control", maxlength = 20 })
+                        @Html.ValidationMessageFor(model => model.PasswordConfirm, "", new { @class = "text-danger" })
+                    </div>
+                    <p class="note">Lưu ý: Mật khẩu phải có tối thiểu 8 ký tự bao gồm chữ, số và các ký tự đặc biệt</p>
+                    <h3 class="fail">@ViewBag.ErrorRegister</h3>
+                    <div class="buttons">
+                        <input style=" height: 50px; outline: none; border: 1px solid rgb(235,235,235); border-radius: 10px; width: 100%; color: white; background-color: rgb(0,101,204);" class="button_dk register-next-step-button" value="Đăng kí" type="submit" name="register-button" id="register-button" />
+                    </div>
+                    <div class="buttons-forgot"><label> Bạn đã có tài khoản? </label> <a class="link_access">@Html.ActionLink("Đăng Nhập Ngay", "LoginCus", "LoginUser")</a></div>
+                </div>
+            </div>
+        </div>
+     }
+</body>

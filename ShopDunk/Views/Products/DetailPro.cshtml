@@ -1,0 +1,82 @@
+﻿@using ShopDunk.Models;
+@using PagedList.Mvc;
+@model PagedList.PagedList<Product>
+@{
+    ViewBag.Title = "UserProDuctDetail";
+    Layout = "~/Views/Shared/MasterLayout.cshtml";
+}
+<head>
+    <link rel="stylesheet" href="~/Content/Home.css" />
+    <script src="https://kit.fontawesome.com/3e21e075ef.js" crossorigin="anonymous"></script>
+</head>
+<style>
+    .MenuPage {
+        display: inline;
+    }
+
+    .pagination a {
+        color: black;
+        background-color: gray;
+        text-decoration: none;
+        width: 20px;
+        height: 20px;
+        color: white;
+        margin-left: 10px;
+        padding: 5px 10px;
+        border-radius: 5px;
+    }
+
+    .pagination .active a {
+        background-color: rgb(0, 102, 204);
+        width: 20px;
+        height: 20px;
+        color: white;
+        padding: 5px 10px;
+        border-radius: 5px;
+    }
+</style>
+<body>
+    <div class="slider container-fluid">
+        <button class="btn left"><i class="fa-solid fa-chevron-left"></i></button>
+        <button class="btn right"><i class="fa-solid fa-chevron-right"></i></button>
+        <img id="main_img" src="">
+        <div class="slide_img">
+            <img src="https://shopdunk.com/images/uploaded/banner/thang%209%202023/banner%20iphone%2015%20pro-2_PC.jpg" class="imgs">
+            <img src="https://shopdunk.com/images/uploaded/banner/thang%209%202023/banner%20iphone%2015-2_PC.jpg" class="imgs">
+            <img src="https://shopdunk.com/images/uploaded/banner/thang%209%202023/banner%20iphone%2014%20Pro%20Max%20T9_Banner%20PC.jpg" class="imgs">
+            <img src="https://shopdunk.com/images/uploaded/banner/thang%209%202023/banner%20ipad%20gen9%20T9_Banner%20PC.jpg" class="imgs">
+            <img src="https://shopdunk.com/images/uploaded/banner/thang%209%202023/banner%20watch%20T9_Banner%20PC.jpg" class="imgs">
+            <img src="https://shopdunk.com/images/uploaded/banner/thang%209%202023/banner%20macbook%20air%20t9_Banner%20PC.jpg" class="imgs">
+            <img src="https://shopdunk.com/images/uploaded/banner/Banner%20th%C3%A1ng%208/PC.png" class="imgs">
+            <img src="https://shopdunk.com/images/uploaded/banner/Banner%20th%C3%A1ng%208/banner%20apple%20pay_Banner%20PC.jpg" class="imgs">
+            <img src="https://shopdunk.com/images/uploaded/banner/Banner%20Web_SD_VN.png" class="imgs">
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            @{
+                int count = 0;
+            }
+            @foreach (var pro in Model)
+            {
+                count = count + 1;
+                if (count == 1)
+                {
+                    <h3 class="text-center">@Html.DisplayFor(model => pro.Category.NameCate)</h3>
+                }
+                <div class="equipment mx-auto col-xl-3 col-lg-4 col-sm-6 bg-white" style="width:320px;border-radius: 10px; margin: 15px 5px; padding: 20px 10px 0 10px; align-items: baseline;">
+                    <a class="row" href="@Url.Action("DetailProduct", "DetailProductVM", new { id = pro.ProID })">
+                        <img class="container img-fluid" src="@Url.Content(pro.ProImage)" style="width:250px;height:260px;" />
+                        <p class="name_equipment">@Html.DisplayFor(model => pro.ProName)</p>
+                        <p class="coin_of_equipment"><span style="color: rgb(0,102,204); font-weight: bold">@string.Format("{0:N0}", pro.PriceReduce) đ</span>  <del style="padding:0 2px 0 15px;">@string.Format("{0:N0}", pro.Price) đ</del>-@Html.DisplayFor(model => pro.DiscountPercent)%</p>
+                    </a>
+                </div>
+            }
+        </div>
+        <div class="MenuPage">
+            <div>@Html.PagedListPager(Model, Page => Url.Action("UserProDuctDetail", new { Page = Page }))</div>
+        </div>
+    </div>
+    <script src="~/Content/Slider.js"></script>
+
+</body>

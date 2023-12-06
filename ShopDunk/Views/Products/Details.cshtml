@@ -1,0 +1,46 @@
+﻿@model ShopDunk.Models.Product
+
+<h1 style="color: darkgreen;text-align:center; padding: 10px; background-color: lightblue; border-radius: 10px; border: 2px solid lawngreen">CHI TIẾT HÀNG HÓA</h1>
+<table class="table">
+    <tr>
+        <td>
+            <img src="@Url.Content(Model.ProImage)" width="150" />
+        </td>
+        <td></td>
+        <td></td>
+    </tr>
+
+    <tr>
+        <th>Tên sản phẩm</th>
+        <td>@Model.ProName</td>
+        <td></td>
+    </tr>
+
+    <tr>
+        <th>Pin</th>
+        <td>@Model.Battery.NameBat</td>
+        <td>@Model.Battery.Storage kmh</td>
+    </tr>
+
+    <tr>
+        <th>Cam trước</th>
+        <td>@Model.FrontCamera.Resolution</td>
+        <td></td>
+
+    </tr>
+
+    <tr>
+        <th>Product Name</th>
+        <td>@Model.RearCamera.Resolution</td>
+        <td></td>
+
+    </tr>
+
+    <tr>
+        <th>Product Name</th>
+        <td>@Model.Screen.Resolution</td>
+        <td></td>
+    </tr>
+</table>
+<a style="padding:5px;background-color:darkgray;color:white;border-radius:5px;text-decoration:none" href="@Url.Action("Index","Products")">Back</a>
+

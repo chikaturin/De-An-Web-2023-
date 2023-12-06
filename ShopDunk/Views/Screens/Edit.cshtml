@@ -1,0 +1,47 @@
+﻿@model ShopDunk.Models.Screen
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h1 style="color: darkgreen; padding: 10px;text-align:center; background-color: lawngreen; border-radius: 10px; border: 2px solid lawngreen">MÀN HÌNH ĐIỆN THOẠI</h1>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.IDScr)
+
+        <div class="form-group">
+            Tên màn hình thiết bị
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.NameScr, new { htmlAttributes = new { @class = "form-control",maxlegth=20 } })
+                @Html.ValidationMessageFor(model => model.NameScr, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Resolution, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Resolution, new { htmlAttributes = new { @class = "form-control", maxlegth = 50 } })
+                @Html.ValidationMessageFor(model => model.Resolution, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <br />
+                <input style="border: 1px solid red; padding: 5px; text-decoration: none;border-radius:5px;color:black" type="submit" value="Sửa" class="bg-info.bg-gradient" />
+                <a class="bg-danger" href="@Url.Action("Index")" style="border: 1px solid red; padding: 5px; text-decoration: none;border-radius:5px;color:white">Danh sách</a>
+            </div>
+        </div>
+    </div>
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,26 @@
+﻿@model ShopDunk.Models.FrontCamera
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>FrontCamera</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Resolution)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Resolution)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IDFCam }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

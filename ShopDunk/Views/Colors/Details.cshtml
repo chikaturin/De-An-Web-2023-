@@ -1,0 +1,32 @@
+﻿@model ShopDunk.Models.Color
+
+@{
+    ViewBag.Title = "Details";
+}
+
+
+<div>
+    <h1 style="color: darkgreen; padding: 10px; background-color: lawngreen; border-radius: 10px; border: 2px solid lawngreen">Chi tiết sản phẩm</h1>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ColorName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ColorName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RGB)
+        </dt>
+
+        <dd>
+            <div style="background-color:@Url.Content(Model.RGB); height: 20px; width: 20px; border-radius: 50%"></div>
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ColorID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

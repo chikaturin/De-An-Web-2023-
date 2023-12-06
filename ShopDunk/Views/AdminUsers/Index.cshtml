@@ -1,0 +1,40 @@
+﻿@model IEnumerable<ShopDunk.Models.AdminUser>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h1 style="color: darkgreen; padding: 10px; background-color: lawngreen;text-align:center; border-radius: 10px; border: 2px solid lawngreen">Admin</h1>
+
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Password)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Role)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Password)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Role)
+            </td>
+            <td>
+                <a href="@Url.Action("Delete", new { id = item.Username })" style="border: 1px solid black; padding: 5px; text-decoration: none; border-radius: 5px; color: black ">xóa</a>
+            </td>
+        </tr>
+    }
+
+</table>
+<p>
+    <a class="bg-danger" href="@Url.Action("Create")" style="border: 1px solid red; padding: 5px; text-decoration: none;border-radius:5px;color:white">Thêm mới</a>
+</p>

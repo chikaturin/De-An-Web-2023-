@@ -1,0 +1,101 @@
+﻿@model ShopDunk.Models.Product
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h1 style="color: darkgreen;text-align:center; padding: 10px; background-color: lawngreen; border-radius: 10px; border: 2px solid lawngreen">QUẢN LÍ HÀNG HÓA</h1>
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ProName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProImage)
+        </dt>
+
+        <dd>
+            <img src="@Model.ProImage" width="100" />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DiscountPercent)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DiscountPercent)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Battery.NameBat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Battery.NameBat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Category.NameCate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Category.NameCate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FrontCamera.Resolution)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FrontCamera.Resolution)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RearCamera.Resolution)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RearCamera.Resolution)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Screen.NameScr)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Screen.NameScr)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input style="border: 1px solid red; padding: 5px; text-decoration: none;border-radius:5px;color:black" type="submit" value="Xóa" class="bg-info.bg-gradient" />
+            <a class="bg-danger" href="@Url.Action("Index")" style="border: 1px solid red; padding: 5px; text-decoration: none;border-radius:5px;color:white">Danh sách</a>        
+        </div>
+    }
+</div>

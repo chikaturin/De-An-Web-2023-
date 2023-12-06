@@ -1,0 +1,109 @@
+﻿@model ShopDunk.Models.ViewModel.Cart
+
+@{
+    Layout = "~/Views/Shared/MasterLayout.cshtml";
+}
+
+<style>
+    .main {
+        display: flex;
+        justify-content: center;
+    }
+
+    .board {
+        border-radius: 10px;
+        background-color: white;
+        display: inline-block;
+        padding: 0px 10px;
+        margin: 20px 0;
+        width: 40%;
+    }
+
+        .board > h1 {
+            text-align: center;
+            font-size: 19px;
+            margin-top: 19px;
+        }
+
+        .board p span {
+            font-weight: bolder;
+        }
+
+
+    .button {
+        width: 100%;
+        justify-content: center;
+        display: flex;
+    }
+
+        .button button {
+            width: 50%;
+            height: 40px;
+            font-size: 15px;
+            border-radius: 10px;
+            color: white;
+            background: rgb(1,100,204);
+        }
+
+    a:link {
+        text-decoration: none;
+    }
+
+    a:visited {
+        text-decoration: none;
+    }
+
+    .row > p {
+        font-weight: bold;
+    }
+    .button {
+        width: 100%;
+        justify-content: center;
+        display: flex;
+    }
+
+        .button button {
+            width: 50%;
+            height: 40px;
+            font-size: 15px;
+            border-radius: 10px;
+            color: white;
+            background: rgb(1,100,204);
+        }
+
+</style>
+<div class="container mt-5 mb-5">
+    <div class="container w-50" style="border:1px solid;border-radius:10px">
+        <div class="row">
+            <h3 style="font:bold;text-align:center">
+                Lịch sử mua hàng
+            </h3>
+            <br />
+            <p>Tên khách hàng:<span style="float: right; padding-right: 5px;">@Model.CusName</span></p>
+            <br />
+            <p>Số điện thoại:<span style="float: right; padding-right: 5px;">@Model.CusPhone</span></p>
+            <br />
+            <p>Email:<span style="float: right; padding-right: 5px;">@Model.CusEmail</span></p>
+            <br />
+            <p>Sản phẩm:</p>
+            <div style=" border-radius: 10px; border: 2px solid rgb(235,235,235); ">
+                @foreach (var item in Model.Items)
+                {
+                    <div class="product d-flex" style="padding-left:40px">
+                        <div>
+                            <img src="@Url.Content(item._product.ProImage)" width="200" />
+                        </div>
+                        <div style="margin-left:5px;margin-top:3px;">
+                            <p style="font-weight:bold">Mã đơn hàng: <span style="float: right; padding-right: 5px;">#@item._order.OrderID</span></p>
+                            <p style="font-weight:bold">Ngày đặt hàng:<span style="float: right; padding-right: 5px;">@item._order.OrderDate</span></p>
+                            <h1 style="font-size: 20px">@Html.DisplayFor(model => item._product.ProName)</h1>
+                            <p style="color: grey; font-weight:bold">Khu vực: Khu vực miền Bắc <span style="float: right; padding-right: 5px;color: black;">SL:@item._quantity</span></p>
+                            <p style="color: grey; font-weight: bold    ">Hình thức: Mua thẳng</p>
+                            <a style="background-color: rgb(1,100,204); padding:5px;float:right;margin-right:8px;border-radius:10px;color:white" href="@Url.Action("DetailProduct", "DetailProductVM", new {id=item._product.ProID})">mua hàng lại</a>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

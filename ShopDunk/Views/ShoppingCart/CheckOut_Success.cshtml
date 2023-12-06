@@ -1,0 +1,107 @@
+﻿@model ShopDunk.Models.ViewModel.Cart
+
+    @{
+        Layout = "~/Views/Shared/MasterLayout.cshtml";
+    }
+
+<style>
+    .main {
+        display: flex;
+        justify-content: center;
+    }
+
+    .board {
+        border-radius: 10px;
+        background-color: white;
+        display: inline-block;
+        padding: 0px 10px;
+        margin: 20px 0;
+        width: 40%;
+    }
+
+        .board > h1 {
+            text-align: center;
+            font-size: 19px;
+            margin-top: 19px;
+        }
+
+        .board p span {
+            font-weight: bolder;
+        }
+
+    .product {
+        padding: 5px 5px 5px 35px;
+        border-radius: 5px;
+        border: 1px solid rgb(235,235,235);
+    }
+
+    .button {
+        width: 100%;
+        justify-content: center;
+        display: flex;
+    }
+
+        .button button {
+            width: 50%;
+            height: 40px;
+            font-size: 15px;
+            border-radius: 10px;
+            color: white;
+            background: rgb(1,100,204);
+        }
+
+    a:link {
+        text-decoration: none;
+    }
+
+    a:visited {
+        text-decoration: none;
+    }
+    .row >p{
+        font-weight:bold;
+    }
+</style>
+<div class="container mt-5 mb-5">
+    <div class="container w-50"style="border:1px solid;border-radius:10px">
+        <div class="row">
+            <h3 style="font:bold;text-align:center">
+                Chi tiết đơn hàng
+            </h3>
+            <p>Mã đơn hàng: <span style="float: right; padding-right: 5px;">#@Model.OrderID</span></p>
+            <br />
+            <p>Ngày đặt hàng:<span style="float: right; padding-right: 5px;">@Model.OrderDate</span></p>
+            <br />
+            <p>Tình trạng:<span style="color:#00cc00;float: right; padding-right: 5px;">Đang xử lý</span></p>
+            <br />
+            <p>Tên khách hàng:<span style="float: right; padding-right: 5px;">@Model.CusName</span></p>
+            <br />
+            <p>Số điện thoại:<span style="float: right; padding-right: 5px;">@Model.CusPhone</span></p>
+            <br />
+            <p>Email:<span style="float: right; padding-right: 5px;">@Model.CusEmail</span></p>
+            <br />
+            <p>Phương thức thanh toán:<span style="float: right; padding-right: 5px;">Chuyển khoản ngân hàng</span></p>
+            <br />
+            <p style="padding-bottom: 15px; border-bottom:1px solid rgb(235,235,235);">Tình trạng thanh toán:<span style="float: right; padding-right: 5px;color:#00cc00">Đang chờ xử lý</span></p>
+            <p>Sản phẩm</p>
+            @foreach (var item in Model.Items)
+            {
+                <div class="product" style="padding-left:40px">
+                    <h1 style="font-size: 20px">@Html.DisplayFor(model => item._product.ProName)</h1>
+                    <p style="color:grey">Khu vực: Khu vực miền Bắc <span style="float: right; padding-right: 5px;color: black;">SL:@item._quantity</span></p>
+                    <p style="color:grey">Hình thức: Mua thẳng</p>
+                    <p style="color:grey">Màu sắc:@item._color.ColorName</p>
+                </div>
+            }
+            @{ 
+                decimal voucher = Convert.ToDecimal(Session["Voucher"]);
+                var price = Model.Total_money()-voucher;
+            }
+            <p style="color:grey">Tổng số tiền đã đặt hàng<span style="float: right; padding-right: 5px;font-size: 27px;color:#0066cc">@string.Format("{0:N0}", price)</span></p>
+            <a href="" style="text-align:center;display:flex;justify-content:center">Nhấp vào đây để biết chi tiết đơn hàng</a>
+            <div class="button" style="padding-top:25px;height:70px">
+                <button onclick="window.location.href='@Url.Action("UserProduct", "Products")'">Tiếp tục mua hàng</button>
+                <button  onclick="window.location.href='@Url.Action("purchases", "ShoppingCart")'" style="margin-left: 30px;">Thanh toán</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,48 @@
+﻿@model ShopDunk.Models.AdminUser
+
+@{
+    ViewBag.Title = "FromLogin";
+    Layout = "~/Views/Shared/MasterLayout.cshtml";
+
+}
+<head>
+    <link rel="stylesheet" href="~/Content/Login.css" />
+</head>
+@using (Html.BeginForm("LoginAccount", "LoginUser"))
+{
+    @Html.AntiForgeryToken()
+    <div class="main container d-flex justify-content-center mt-4 mb-4">
+        <div class="row d-flex justify-content-center">
+            <div class="col-6"><img style="width:100%;height:500px;" src="https://shopdunk.com/images/uploaded/banner/VNU_M492_08%201.jpeg" /></div>
+            <div class="col-6">
+                <div class="dangnhap">
+                    <p>Tên đăng nhập:</p>
+                    @Html.TextBoxFor(model => model.Username, new { style = "field-validation-error" , maxlength = 10})
+                    @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
+                </div>
+                <div class="matkhau">
+                    <p>Mật khẩu:</p>
+                    @Html.PasswordFor(model => model.Password,new { @type = "password", maxlength = 20 })
+                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                    @if (ViewBag.ErrorInfo == null)
+                    {
+                        <p>@ViewBag.ErrorInfo</p>
+                    }
+                </div>
+                <br />
+                <div class="nhomatkhau">
+                    <input type="checkbox" class="check" /><span style="margin-left: 3px;">Nhớ mật khẩu</span>
+                    <br />
+                    <input type="submit" value="Login" class="button_dk" id="button_dk" />
+                    <div class="chuacotk mt-3">
+                        <a class="mb-2" href="@Url.Action("LoginCus", "LoginUser")"><p>Đăng nhập cho người dùng</p></a>
+                        <span> Bạn Chưa Có Tài Khoản? </span>
+                        <a href="@Url.Action("RegisterCus", "LoginUser")"><p>Tạo tài khoản ngay</p></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+

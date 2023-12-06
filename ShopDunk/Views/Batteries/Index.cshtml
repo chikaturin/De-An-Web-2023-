@@ -1,0 +1,39 @@
+﻿@model IEnumerable<ShopDunk.Models.Battery>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h1 style="color: darkgreen; padding: 10px; background-color: lawngreen;text-align:center; border-radius: 10px; border: 2px solid lawngreen">PIN</h1>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Storage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NameBat)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr style="border:2px solid gray">
+            <td>
+                @Html.DisplayFor(modelItem => item.Storage)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NameBat)
+            </td>
+            <td>
+                <a href="@Url.Action("Edit", new { id = item.BatID })" style="border: 1px solid black; padding: 5px; text-decoration: none;border-radius:5px;color:black">Sửa</a>
+                <a href="@Url.Action("Delete", new { id = item.BatID })" style="border: 1px solid black; padding: 5px; text-decoration: none; border-radius: 5px; color: black ">xóa</a>
+            </td>
+        </tr>
+    }
+
+</table>
+<p>
+    <a class="bg-danger" href="@Url.Action("Create")" style="border: 1px solid red; padding: 5px; text-decoration: none;border-radius:5px;color:white">Thêm mới</a>
+</p>

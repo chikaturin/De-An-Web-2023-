@@ -1,0 +1,37 @@
+﻿@model IEnumerable<ShopDunk.Models.Product>
+    @{ 
+        Layout = "~/Views/Shared/MasterLayout.cshtml";
+    }
+<head>
+    <link rel="stylesheet" href="~/Content/Home.css" />
+</head>
+@using (Html.BeginForm("SearchOption", "Products"))
+{
+    <div class="container mt-3">
+        <text>Từ</text>
+        <input type="number" name="min" />
+        <text>Đến</text>
+        <input type="number" name="max" />
+        <input type="submit" value="Search" />
+        <div class="row">
+            @foreach (var pro in Model)
+            {
+                <div class="equipment mx-auto col-xl-3 col-lg-4 col-sm-6 bg-white" style="width:320px;border-radius: 10px; margin: 15px 5px; padding: 20px 10px 0 10px; align-items: baseline;">
+                    <a class="row" href="@Url.Action("DetailProduct", "DetailProductVM", new { id = pro.ProID })">
+                        <img class="container img-fluid" src="@Url.Content(pro.ProImage)" style="width:250px;height:260px;" />
+                        <p class="name_equipment">@Html.DisplayFor(model => pro.ProName)</p>
+                        <p class="coin_of_equipment">
+                            <span style="color: rgb(0,102,204); font-weight: bold">
+                                @string.Format("{0:N0}", pro.PriceReduce) đ
+                            </span>
+                            <del style="padding:0 2px 0 15px;">
+                                @string.Format("{0:N0}", pro.Price) đ
+                            </del>
+                            -@Html.DisplayFor(model => pro.DiscountPercent)%
+                        </p>
+                    </a>
+                </div>
+            }
+        </div>
+    </div>
+}

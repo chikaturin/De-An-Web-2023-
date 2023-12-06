@@ -1,0 +1,165 @@
+﻿@model ShopDunk.Models.ViewModel.DetailProductVM
+
+@{
+    ViewBag.Title = "DetailProduct";
+    Layout = "~/Views/Shared/MasterLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Sell_equipment</title>
+    <link rel="stylesheet" href="~/Content/Sell_Equipment.css" />
+    <script src="https://kit.fontawesome.com/3e21e075ef.js" crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <div class="container">
+        <p style="padding: 0 80px; color: rgb(81,81,84)">Home >  @Html.DisplayFor(model => model.NameCate) > @Html.DisplayFor(model => model.NameCate) series >     @Html.DisplayFor(model => model.ProName) </p>
+        <div class="container">
+            <div class="Layout-Equipment d-flex justify-content-center">
+                <div class="Show-equipment col-6">
+                    <div class="image_pro"><img src="@Url.Content(Model.ProImage)" /></div>
+                </div>
+                <div class="infor-equipment col-6">
+                    <h2> @Html.DisplayFor(model => model.ProName)</h2>
+                    <div class="Evaluate">
+                        <div class="star">
+                            <span style="padding: 0 30px; color: rgb(0,101,204)">@Html.DisplayFor(model => model.ViewQuantity) reviews | + Compare </span>
+                        </div>
+                        <select style=" width: 150px; height: 30px; padding: 0 10px;margin-left:70px; border-radius: 5px; border-color: rgb(235,235,235)">
+                            <option value="Please select">Please select</option>
+                            <option value="Northern of VN ">Northern of VN </option>
+                            <option value="Southern of VN">Southern of VN</option>
+                        </select>
+                    </div>
+                    <h2 style="color: rgb(0,101,204) ">@string.Format("{0:N0}", Model.PriceReduce) <del style="color: rgb(153,153,153);font-size:20px;font-weight:100; padding:0 30px">@string.Format("{0:N0}", Model.Price)</del></h2>
+                    <p style="font-size:15px">Storage</p>
+                    <div>
+                        <div class="d-flex" style="padding-right:10px">
+                            @foreach (var color in Model._vms)
+                            {
+                                <div style="border:1px solid gray; margin-right:5px; padding:5px; width:fit-content; border-radius:10px;">
+                                    @Html.DisplayFor(model => color._mem.NameMem)
+                                </div>
+                            }
+                        </div>
+                    </div>
+                    <span style="font-size:15px;padding-top:15px;">Color</span>
+                    <br />
+                    <div class="Color">
+                        <div class="d-flex" style="padding-right:10px">
+                            @foreach (var color in Model._vms)
+                            {
+                                <div style="background-color: @Url.Content(color._color.RGB);
+                                margin-right: 10px; height: 20px;
+                                width: 20px; border-radius: 50%">
+                                </div>
+                            }
+                        </div>
+                    </div>
+                    <form class="form">
+                        <fieldset class="fieldset1" style="border-top:none;">
+                            <p><i style="padding:0 7px;" class="fa-solid fa-gift"></i>Extra offer</p>
+                            <p style="color:red; font-weight:bolder;padding:0 9px">Payment Offer<span style="color: rgb(0,126,219);padding:0 2px">(detail)</span></p>
+                            <p style="font-size:16px;padding:0 8px">● 5% discount up to 500,000 VND via Kredivo <i style="font-size:13px">(Limited quantity)</i></p>
+                            <p style="color:red; font-weight:bolder;padding:0 9px">Combo Offer</p>
+                            <div class="Buy">
+                                <span>Buy  accessories</span><span>Buy 3 accessories</span><span>Buy 4 accessories</span><span>Buy 5 accessories</span>
+                            </div>
+                            <p style="color: rgb(0,126,219)" z-index:10;>See More Deal <i class="fa-solid fa-chevron-down"></i></p>
+                        </fieldset>
+                        <p style="color: rgb(0,101,204) "><i class="fa-solid fa-box"></i> Product availality</p>
+                        <br />
+                        <a href="/ShoppingCart/AddToCart/@Model.ProID" style="width: 100%;padding:22px 0;border:none; font-size: 20px; background-color: rgb(0,101,204); color: white; border-radius: 10px; text-decoration:none"><span style="padding:38%;">ADD TO CART</span></a>
+                        <div style="margin:30px 0"><button style="width: 46%; height: 70px; color: rgb(0,101,204); font-size: 20px; border: 1px solid rgb(0,101,204); background-color: white; border-radius: 10px;margin:10px 0 ">Buy Now</button><button style="width: 46%; height: 70px; color: rgb(0,101,204); font-size: 20px; border: 1px solid rgb(0,101,204); background-color: white; border-radius: 10px;margin:10px 3% ">Trade in</button></div>
+                        <div class="hotline">
+                            <p><i class="fa-solid fa-circle-check" style="color: #0061ff;"></i>The package includes: Box, Instruction manual, SIM ejector tool, Lightning - Type C cable</p>
+                            <p><i class="fa-solid fa-circle-check" style="color: #0061ff;"></i>One-year official warranty<span> (detail)</span></p>
+                            <p><i class="fa-solid fa-circle-check" style="color: #0061ff;"></i>Fast delivery nationwide<span> (detail)</span></p>
+                            <p><i class="fa-solid fa-circle-check" style="color: #0061ff;"></i>The package includes: Box, Instruction manual, SIM ejector tool, Lightning - Type C cable<span> (detail)</span></p>
+                            <p><i class="fa-solid fa-circle-check" style="color: #0061ff;"></i>Tax Refund For Foreingers</p>
+                            <p><i class="fa-solid fa-circle-check" style="color: #0061ff;"></i>Order <span>1900.6626</span> (7:30 a.m - 10:00 p.m)</p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        @Html.Partial("GetRelatedProductByProduct")
+    </div>
+    <div class="container">
+        <div class="d-flex">
+            <div class="d-flex col-xl-12 justify-content-center" style="cursor:pointer">
+                <span id="open_tb1" class="border col-xl-6 h3" style="border-radius:10px;padding:10px;text-align:center;margin-top:10px;width:fit-content;height:fit-content">Thông số kĩ thuật</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xl-12 tb1" id="table">
+                <table class="table table-dark" style="border:1px solid black" width="110">
+                    <tr>
+                        <td>
+                            Bộ nhớ
+                        </td>
+                        <td style="text-align: left;padding-left:30%">
+                            @Html.DisplayFor(model => model.NameMem)
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Kết nối mạng
+                        </td>
+                        <td style="text-align: left;padding-left:30%">
+                            @Html.DisplayFor(model => model.ConnectNetwork)
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Camera sau
+                        </td>
+                        <td style="text-align: left;padding-left:30%">
+                            @Html.DisplayFor(model => model.ResolutionR)
+                        </td>
+                        <td></td>
+
+                    </tr>
+                    <tr>
+                        <td>
+                            Camera trước
+                        </td>
+                        <td style="text-align: left;padding-left:30%">
+                            @Html.DisplayFor(model => model.ResolutionF)
+                        </td>
+                        <td></td>
+
+                    </tr>
+                    <tr>
+                        <td>
+                            Pin
+                        </td>
+                        <td style="text-align: left;padding-left:30%">
+                            @Html.DisplayFor(model => model.NameBat)
+                        </td>
+                        <td></td>
+
+                    </tr>
+                    <tr>
+                        <td>
+                            Màn Hình
+                        </td>
+                        <td style="text-align: left;padding-left:30%">
+                            @Html.DisplayFor(model => model.NameScr)
+                        </td>
+                        <td></td>
+
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <img class="" style="width:100%;height:100vh;margin-left:10px;" src="https://shopdunk.com/images/uploaded-source/compareiphone15/hero_large.png?1694035518952" />
+</body>
+</html>

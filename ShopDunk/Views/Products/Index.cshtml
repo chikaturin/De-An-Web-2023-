@@ -1,0 +1,124 @@
+﻿@using ShopDunk.Models;
+@using PagedList.Mvc;
+@model PagedList.PagedList<Product>
+
+@{
+    ViewBag.Title = "AdminProduct";
+}
+
+<h1 style="color: darkgreen;text-align:center; padding: 10px; background-color: lightblue; border-radius: 10px; border: 2px solid lawngreen">QUẢN LÍ HÀNG HÓA</h1>
+<style>
+    .MenuPage {
+        display: inline;
+    }
+
+    .pagination a {
+        color: black;
+        background-color: gray;
+        text-decoration: none;
+        width: 20px;
+        height: 20px;
+        color: white;
+        margin-left: 10px;
+        padding: 5px 10px;
+        border-radius: 5px;
+    }
+
+    /* Màu sắc của ô phân trang được chọn */
+    .pagination .active a {
+        background-color: rgb(0, 102, 204);
+        width: 20px;
+        height: 20px;
+        color: white;
+        padding: 5px 10px;
+        border-radius: 5px;
+    }
+</style>
+<table class="table">
+    <tr>
+        <th>
+            Tên sản phẩm
+        </th>
+        <th>
+            Hình ảnh
+        </th>
+        <th>
+            Giá sản phẩm
+        </th>
+        <th>
+            Giảm giá phần trăm
+        </th>
+        <th>
+            Ngày sản xuất
+        </th>
+        <th>
+            Tên dòng sản phẩm
+        </th>
+        <th>
+        </th>
+    </tr>
+    <tr style="margin-bottom:10px;">
+        <td></td>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr style="border:2px solid gray">
+            <td>
+                @Html.DisplayFor(modelItem => item.ProName)
+            </td>
+            <td>
+                <img src="@Url.Content(item.ProImage)" width="150" />
+            </td>
+            <td>
+                @string.Format("{0:N0}", item.PriceReduce)
+            </td>
+            <td>
+                -@Html.DisplayFor(modelItem => item.DiscountPercent)%
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category.NameCate)
+            </td>
+            <td>
+                <br />
+                <p><a href="@Url.Action("Edit", new { id = item.ProID })" style="border: 1px solid black; padding: 5px; text-decoration: none;border-radius:5px;color:black">Sửa</a></p>
+                <p><a href="@Url.Action("Details", new { id = item.ProID })" style="border: 1px solid black; padding: 5px; text-decoration: none; border-radius: 5px; color: black ">Chi tiết</a></p>
+                <p><a href="@Url.Action("Delete", new { id = item.ProID })" style="border: 1px solid black; padding: 5px; text-decoration: none; border-radius: 5px; color: black ">Xóa</a></p>
+            </td>
+        </tr>
+    }
+
+</table>
+<div class="MenuPage">
+    <div>@Html.PagedListPager(Model, Page => Url.Action("Index", new { Page = Page }))</div>
+</div>
+<p>
+    <a class="bg-danger" href="@Url.Action("Create")" style="border: 1px solid red; padding: 5px; text-decoration: none;border-radius:5px;color:white">Thêm mới</a>
+</p>
+<div class="container-md">
+    <p>
+        <button class="btn btn-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">
+            Quản lý danh mục
+        </button>
+    </p>
+    <div style="min-height: 120px;">
+        <div class="collapse collapse-horizontal" id="collapseWidthExample">
+            <div class="card card-body" style="width: 300px;">
+                <ul class="navbar-nav flex-grow-1 table-hover">
+
+                    <li>@Html.ActionLink("MÀU SẮC", "Index", "Colors", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("PIN", "Index", "Batteries", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("DÒNG SẢN PHẨM", "Index", "Categories", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("CAMERA TRƯỚC", "Index", "FrontCameras", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("CAMERA SAU", "Index", "RearCameras", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("BỘ NHỚ", "Index", "Memories", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("MÀN HÌNH", "Index", "Screens", new { area = "" }, new { @class = "nav-link" })</li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+

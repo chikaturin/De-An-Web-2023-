@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DBShopDunkModelStoreContainer" CdmEntityContainer="DBShopDunkEntities1">
+    <EntitySetMapping Name="AdminUsers">
+      <EntityTypeMapping TypeName="DBShopDunkModel.AdminUser">
+        <MappingFragment StoreEntitySet="AdminUser">
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Role" ColumnName="Role" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Batteries">
+      <EntityTypeMapping TypeName="DBShopDunkModel.Battery">
+        <MappingFragment StoreEntitySet="Battery">
+          <ScalarProperty Name="BatID" ColumnName="BatID" />
+          <ScalarProperty Name="Storage" ColumnName="Storage" />
+          <ScalarProperty Name="NameBat" ColumnName="NameBat" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Categories">
+      <EntityTypeMapping TypeName="DBShopDunkModel.Category">
+        <MappingFragment StoreEntitySet="Category">
+          <ScalarProperty Name="CatID" ColumnName="CatID" />
+          <ScalarProperty Name="NameCate" ColumnName="NameCate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Colors">
+      <EntityTypeMapping TypeName="DBShopDunkModel.Color">
+        <MappingFragment StoreEntitySet="Color">
+          <ScalarProperty Name="ColorID" ColumnName="ColorID" />
+          <ScalarProperty Name="ColorName" ColumnName="ColorName" />
+          <ScalarProperty Name="RGB" ColumnName="RGB" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Customers">
+      <EntityTypeMapping TypeName="DBShopDunkModel.Customer">
+        <MappingFragment StoreEntitySet="Customer">
+          <ScalarProperty Name="CusPhone" ColumnName="CusPhone" />
+          <ScalarProperty Name="CusPassword" ColumnName="CusPassword" />
+          <ScalarProperty Name="CusName" ColumnName="CusName" />
+          <ScalarProperty Name="CusEmail" ColumnName="CusEmail" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FrontCameras">
+      <EntityTypeMapping TypeName="DBShopDunkModel.FrontCamera">
+        <MappingFragment StoreEntitySet="FrontCamera">
+          <ScalarProperty Name="IDFCam" ColumnName="IDFCam" />
+          <ScalarProperty Name="Resolution" ColumnName="Resolution" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Memories">
+      <EntityTypeMapping TypeName="DBShopDunkModel.Memory">
+        <MappingFragment StoreEntitySet="Memory">
+          <ScalarProperty Name="IDMem" ColumnName="IDMem" />
+          <ScalarProperty Name="NameMem" ColumnName="NameMem" />
+          <ScalarProperty Name="StorageMem" ColumnName="StorageMem" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Orders">
+      <EntityTypeMapping TypeName="DBShopDunkModel.Order">
+        <MappingFragment StoreEntitySet="Order">
+          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+          <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+          <ScalarProperty Name="CusPhone" ColumnName="CusPhone" />
+          <ScalarProperty Name="AddressDeliverry" ColumnName="AddressDeliverry" />
+          <ScalarProperty Name="TotalValue" ColumnName="TotalValue" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrderDetails">
+      <EntityTypeMapping TypeName="DBShopDunkModel.OrderDetail">
+        <MappingFragment StoreEntitySet="OrderDetail">
+          <ScalarProperty Name="OrderDetailID" ColumnName="OrderDetailID" />
+          <ScalarProperty Name="ProSupID" ColumnName="ProSupID" />
+          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProDetails">
+      <EntityTypeMapping TypeName="DBShopDunkModel.ProDetail">
+        <MappingFragment StoreEntitySet="ProDetail">
+          <ScalarProperty Name="ProDeID" ColumnName="ProDeID" />
+          <ScalarProperty Name="ProID" ColumnName="ProID" />
+          <ScalarProperty Name="ColorID" ColumnName="ColorID" />
+          <ScalarProperty Name="RemainQuantity" ColumnName="RemainQuantity" />
+          <ScalarProperty Name="SoldQuantity" ColumnName="SoldQuantity" />
+          <ScalarProperty Name="ViewQuantity" ColumnName="ViewQuantity" />
+          <ScalarProperty Name="IDVoucher" ColumnName="IDVoucher" />
+          <ScalarProperty Name="ConnectNetwork" ColumnName="ConnectNetwork" />
+          <ScalarProperty Name="IDMemory" ColumnName="IDMemory" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Products">
+      <EntityTypeMapping TypeName="DBShopDunkModel.Product">
+        <MappingFragment StoreEntitySet="Product">
+          <ScalarProperty Name="ProID" ColumnName="ProID" />
+          <ScalarProperty Name="ProName" ColumnName="ProName" />
+          <ScalarProperty Name="CatID" ColumnName="CatID" />
+          <ScalarProperty Name="ProImage" ColumnName="ProImage" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="DiscountPercent" ColumnName="DiscountPercent" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="IDRCam" ColumnName="IDRCam" />
+          <ScalarProperty Name="IDFCam" ColumnName="IDFCam" />
+          <ScalarProperty Name="IDScreen" ColumnName="IDScreen" />
+          <ScalarProperty Name="IDBatery" ColumnName="IDBatery" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RearCameras">
+      <EntityTypeMapping TypeName="DBShopDunkModel.RearCamera">
+        <MappingFragment StoreEntitySet="RearCamera">
+          <ScalarProperty Name="IDRCam" ColumnName="IDRCam" />
+          <ScalarProperty Name="Resolution" ColumnName="Resolution" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Screens">
+      <EntityTypeMapping TypeName="DBShopDunkModel.Screen">
+        <MappingFragment StoreEntitySet="Screen">
+          <ScalarProperty Name="IDScr" ColumnName="IDScr" />
+          <ScalarProperty Name="NameScr" ColumnName="NameScr" />
+          <ScalarProperty Name="Resolution" ColumnName="Resolution" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Vouchers">
+      <EntityTypeMapping TypeName="DBShopDunkModel.Voucher">
+        <MappingFragment StoreEntitySet="Voucher">
+          <ScalarProperty Name="IDVoucher" ColumnName="IDVoucher" />
+          <ScalarProperty Name="NameVoucher" ColumnName="NameVoucher" />
+          <ScalarProperty Name="DiscountLevel" ColumnName="DiscountLevel" />
+          <ScalarProperty Name="Expired_time" ColumnName="Expired time" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

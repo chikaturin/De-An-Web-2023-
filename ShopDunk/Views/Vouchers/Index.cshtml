@@ -1,0 +1,45 @@
+﻿@model IEnumerable<ShopDunk.Models.Voucher>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h1 style="color: darkgreen; padding: 10px;text-align:center; background-color: lawngreen; border-radius: 10px; border: 2px solid lawngreen">VOUCHER</h1>
+
+<table class="table">
+    <tr>
+        <th>
+            Tên voucher
+        </th>
+        <th>
+            Giảm giá
+        </th>
+        <th>
+            Thời gian hết hạn
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NameVoucher)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DiscountLevel)%
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Expired_time)
+            </td>
+            <td>
+                <span><a href="@Url.Action("Edit", new { id = item.IDVoucher })" style="border: 1px solid black; padding: 5px; text-decoration: none;border-radius:5px;color:black">Sửa</a></span>
+                <span><a href="@Url.Action("Delete", new { id = item.IDVoucher })" style="border: 1px solid black; padding: 5px; text-decoration: none; border-radius: 5px; color: black ">xóa</a></span>
+            </td>
+        </tr>
+    }
+
+</table>
+<p>
+    <a class="bg-danger" href="@Url.Action("Create")" style="border: 1px solid red; padding: 5px; text-decoration: none;border-radius:5px;color:white">Thêm mới</a>
+</p>

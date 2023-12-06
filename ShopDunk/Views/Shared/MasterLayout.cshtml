@@ -1,0 +1,162 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/Content/MasterLayout.css"/>
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <script src="https://kit.fontawesome.com/3e21e075ef.js" crossorigin="anonymous"></script>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="above container-fluid d-flex" style="z-index:997">
+        <div class="container above_header row-cols-auto">
+            <header class="row  header1 col-xl-2 col-lg-4 col-sm-6">
+                <a href="/Home"><img src="https://shopdunk.com/images/thumbs/0012445_Logo_ShopDunk.png" /></a>
+            </header>
+            <nav class="row">
+                <div class="col-xl-1 col-sm-2 nav-item" style="margin-left:10px;">
+                    <a class="text-decoration-none" href="@Url.Action("DetailPro/1", "Products")"><span style=" color: rgb(210,210,215); ">Iphone</span></a>
+                </div>
+                <div class="col-xl-1  col-sm-2">
+                    <a class="text-decoration-none" href="@Url.Action("DetailPro/2", "Products")"><span style=" color: rgb(210,210,215);">iPad</span></a>
+                </div>
+                <div class="col-xl-1  col-sm-2">
+                    <a class="text-decoration-none" href="@Url.Action("DetailPro/3", "Products")"><span style=" color: rgb(210,210,215); ">MachBook</span></a>
+                </div>
+                <div class="col-xl-1  col-sm-2">
+                    <a class="text-decoration-none" href="@Url.Action("DetailPro/7", "Products")"><span style=" color: rgb(210,210,215); ">Watch</span></a>
+                </div>
+                <div class="col-xl-1  col-sm-2">
+                    <a class="text-decoration-none" href="@Url.Action("DetailPro/4", "Products")"><span style=" color: rgb(210,210,215); ">Sounds</span></a>
+                </div>
+                <div class="col-xl-1  col-sm-2">
+                    <a class="text-decoration-none" href="@Url.Action("DetailPro/5", "Products")"><span style=" color: rgb(210,210,215); ">Accessories</span></a>
+                </div>
+                <div class="col-xl-1  col-sm-2">
+                    <a class="text-decoration-none" href="@Url.Action("DetailPro/6", "Products")"><span style=" color: rgb(210,210,215); "><span>Service <i class="fa-solid fa-angle-down" style="color: rgb(210,210,215);"></i></span></span></a>
+                </div>
+                <div class="col-xl-1  col-sm-2">
+                    <a class="text-decoration-none" href="@Url.Action("DetailPro/6", "Products")"><span style=" color: rgb(210,210,215); "><span>News <i class="fa-solid fa-angle-down" style="color: rgb(210,210,215);"></i></span></span></a>
+                </div>
+            </nav>
+            <header class="row col-xl-2 col-lg-4 col-sm-6">
+                <div class="header2-div">
+                    <i id="open_find" class="fa-solid fa-magnifying-glass" style="margin-top:1px;"></i>
+                    <div>
+                        <a href="@Url.Action("ShowCart","ShoppingCart")"><i class="fa-solid fa-bag-shopping"></i></a>
+                        @Html.Action("BagCart","ShoppingCart")
+                    </div>
+                   
+                    <i class="fa-regular fa-user" style="height:30px">
+                        <span class="User" style="padding-top:7px;">
+                            @if (Session["CusPhone"] != null)
+                            {
+                                <a href="@Url.Action("UserProfile", "LoginUser")"><p>Tài khoản của tôi</p></a>
+                                <a href="@Url.Action("LogOutUser", "LoginUser")"><p>Log Out</p></a>
+                            }
+                            else
+                            {
+                                <a href="@Url.Action("RegisterCus", "LoginUser")"><p>Register</p></a>
+                                <a href="@Url.Action("LoginCus", "LoginUser")"><p>Log In</p></a>
+                            }
+                        </span>
+                    </i>
+                    <img src="https://shopdunk.com/images/flags/vn.png" style="width:23px; height:20px; padding:4px 3px" />
+                    <img src="https://shopdunk.com/images/flags/us.png" style="width:18px; height:13px; margin-top:3px;" />
+                </div>
+            </header>
+
+        </div>
+    </div>
+    <div id="find" style="position: fixed; display: none; z-index: 997; width: 100%; height: 100%; top: 0; left: 0; background-color: rgba(0, 0, 0, 0.9);">
+        <span id="searchx" style="color:red;font-weight:bolder;z-index:999;font-size:30px;float:right;margin-top:30px;;padding-right:20%;cursor:pointer">x</span>
+        <div class=" justify-content-center align-items-center" style="height: 60vh;">
+            <form style="width: 100%;" class="d-flex justify-content-center align-items-center flex-wrap" action="/products/search">
+                <input style="width: 70%; margin-top:10%" type="search" class="form-control mx-2" id="search" name="search" value="@ViewBag.Search" placeholder="Search" maxlength=20 />
+            </form>
+            <a class="text-decoration-none d-flex justify-content-center mt-3" href="@Url.Action("SearchOption","Products")">Tìm kiếm theo giá sản phẩm</a>
+        </div>
+    </div>
+    <div class="main">
+        @RenderBody()
+    </div>
+    <footer class="footer-tb">
+        <div class="Register justify-content-center">
+            <div>
+                <h1 style="text-align: center;">Sign Up For Latest New From Shopdunk</h1>
+                <p style="text-align: center;">Latest Product And Sale</p>
+                <div class="input-group input-group-sm mb-3 d-flex" style="margin-left:39%">
+                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="Enter your email here..." style="border-top-left-radius: 20px; border-bottom-left-radius: 20px; outline: none;box-shadow:none" maxlength=30>
+                    <span class="input-group-text" id="inputGroup-sizing-sm" style="border-bottom-right-radius: 20px; border-top-right-radius: 20px;">Subscribe</span>
+                </div>
+            </div>
+        </div>
+        <div class="below_footer">
+            <div class="container">
+                <div class="row1">
+                    <div class="col1">
+                        <a href="#"><img src="https://shopdunk.com/images/thumbs/0012445_Logo_ShopDunk.png" style="width:180px;height:50px" /></a>
+                        <p>In 2020, ShopDunk becomes an authorized Apple reseller. We develop standard chain stores and Apple Mono Store to bring the best experience of Apple products and services to Vietnamese users.</p>
+                        <div class="td1-div">
+                            <a href="https://www.facebook.com/shopdunk.store"><img src="https://shopdunk.com/Themes/SD/Content/images/Face.png" /></a>
+                            <a href="https://www.tiktok.com/shopdunk_apple"><img src="https://shopdunk.com/Themes/SD/Content/images/Youtube.png" /></a>
+                            <a href="https://zalo.me/3937868610324741136"><img src="https://shopdunk.com/Themes/SD/Content/images/Zalo.png" /></a>
+                        </div>
+                    </div>
+                    <div class="col2" style="padding-top:30px;">
+                        <ul class="ul1">
+                            <li class="h3">Address & Contact</li>
+                            <li>News</li>
+                            <li>About</li>
+                            <li>Check IMEI</li>
+                            <li>Payment method</li>
+                            <li>Rent retail location</li>
+                            <li>Warrenty and repair</li>
+                            <li>Careers</li>
+                            <li>Quality assessment,complaints</li>
+                        </ul>
+                        <ul class="ul1">
+                            <li class="h3">Address & Contact</li>
+                            <li>Trade in sale</li>
+                            <li>Delivery</li>
+                            <li>Delivery (Zalo pay)</li>
+                            <li>Cancel the transaction</li>
+                            <li>Product return</li>
+                            <li>Apple warrantly</li>
+                            <li>Service</li>
+                            <li>Resolve complaints</li>
+                            <li>Security policy</li>
+                            <li>Hướng dẫn thanh toán qua VNPAY</li>
+                        </ul>
+                        <ul class="ul1">
+                            <li class="h3">Address & Contact</li>
+                            <li>My account</li>
+                            <li>Orders</li>
+                            <li>Branches</li>
+                            <li>Find strore on Google Map</li>
+                            <li>Purchase: <span style="color: rgb(0,101,204)">1900.6626</span></li>
+                            <li>Complaint:<span style="color: rgb(0,101,204)">0886.308.688</span></li>
+                            <li>Exterprise: <span style="color: rgb(0,101,204)">0822.688.688</span></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row2">
+                    <p>
+                        © 2016 Công ty Cổ Phần HESMAN Việt Nam GPDKKD: 0107465657 do Sở KH & ĐT TP. Hà Nội cấp ngày 08/06/2016.
+                        Địa chỉ: Số 76 Thái Hà, phường Trung Liệt, quận Đống Đa, thành phố Hà Nội, Việt Nam
+                        Đại diện pháp luật: PHẠM MẠNH HÒA | ĐT: 0247.305.9999 | Email: lienhe@shopdunk.com
+                    </p>
+                    <a href="http://online.gov.vn/(X(1)S(jfktnnku5rui3vjf5pnk4sgc))/Home/WebDetails/34144?AspxAutoDetectCookieSupport=1"><img style="float:right;width:125px; height:80px;" src="https://shopdunk.com/images/uploaded-source/Trang%20ch%E1%BB%A7/Bocongthuong.png" /></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="~/Content/MasterLayoutJS.js"></script>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+
+</html>

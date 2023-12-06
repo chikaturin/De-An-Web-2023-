@@ -1,0 +1,103 @@
+﻿body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    background-color: rgb(245,245,247);
+}
+.slider {
+    width: 100%;
+    position: relative;
+    display: flex;
+    background: #A0A0A0;
+    padding: 0;
+    justify-content: space-around;
+}
+
+.slide_img {
+    position: absolute;
+    display: flex;
+    width: 10%;
+    justify-content: space-between;
+    bottom: 10px;
+}
+
+.slide_img img {
+    width: 0px;
+    height: 0px;
+    border: 4px solid #A0A0A0;
+    border-radius: 50%;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+}
+
+.slide_img img.active, .slide_img img:hover {
+    border: 4px solid #606060;
+}
+
+#main_img {
+    width: 100%;
+}
+
+.btn {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-color: rgba(225, 224, 224, 0.2);
+    top: 50%;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.3);
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+.equipment a{
+    text-decoration:none;
+}
+.coin_of_equipment {
+    color: rgb(134,134,139);
+    margin-left: 17px;
+}
+
+.name_equipment {
+    font-size: 23px;
+    font-weight: bolder;
+    margin: 10px 17px;
+    color: black;
+    width: 100%;
+}
+.equipment :hover {
+    filter: brightness(105%);
+}
+.btn:hover {
+    background-color: rgba(224, 224, 224, 0.7);
+    color: rgba(255, 255, 255, 1);
+}
+
+.btn.left {
+    left: 50px;
+}
+
+.btn.right {
+    right: 50px;
+}
+.cate {
+    margin:20px 0;
+}
+    .cate a {
+        text-align: center;
+        border: 2px solid rgb(0,102,204);
+        padding: 10px 50px;
+        width: 180px;
+        height: 45px;
+        border-radius: 10px;
+    }
+.cate a:hover {
+    background-color: rgb(0,102,204);
+    color:white;
+}
+.News-boss{
+    margin-top:20px;
+    margin-bottom:20px;
+}

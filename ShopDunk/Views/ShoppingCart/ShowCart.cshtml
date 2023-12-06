@@ -1,0 +1,163 @@
+﻿@model ShopDunk.Models.ViewModel.Cart
+
+@{
+    ViewBag.Title = "ShowCart";
+    Layout = "~/Views/Shared/MasterLayout.cshtml";
+}
+<head>
+</head>
+<style>
+    body {
+        background-color: rgb(245,245,247);
+    }
+
+    .coupon {
+        border: 2px solid rgb(235,235,235);
+        margin: 0 6%;
+        width: 90%;
+        border-radius: 10px;
+    }
+    form{
+        width:100%;
+    }
+
+        .coupon input {
+            font-size: 17px;
+            background: none;
+            border: none;
+            outline: none;
+            padding: 15px 0;
+        }
+
+        .coupon span {
+            float: right;
+            color: white;
+            border: 2px solid rgb(170,170,170);
+            padding: 13.5px 13.5px 13.5px 0;
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
+            background-color: rgb(170,170,170);
+            height: 5%;
+        }
+
+    .total {
+        margin-top: 30px;
+        width: 90%;
+        margin-left: 20px;
+    }
+
+    .agree {
+        width: 80%;
+        margin-left: 20px;
+    }
+
+        .agree input {
+            width: 20px;
+            height: 20px;
+        }
+
+    .checkout {
+        border: none;
+        background-color: rgb(0,101,204);
+        width: 100%;
+        margin:5px 0;
+        text-decoration:none;
+        border-radius: 10px;
+        padding: 20px;
+        text-align:center;
+    }
+    .checkout a{
+        font-size: 20px;
+        color: white;
+        text-decoration: none;
+    }
+</style>
+<body>
+
+        <div class="container mt-4">
+            <div class="row">
+                <div class="col-8">
+                    @if (Model != null)
+                    {
+                        <table class="table" style="background-color:white;border-radius:10px;padding:20px;">
+                            <thead>
+                                <tr>
+                                    <th>Hình ảnh</th>
+                                    <th>Tên sản phẩm</th>
+                                    <th>Giá bán</th>
+                                    <th>Số lượng </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.Items)
+                                {
+                                    double total = item._quantity * item._product.PriceReduce;
+                                    <tr>
+                                        <td><img src="@Url.Content(item._product.ProImage)" height="150" width="150" /></td>
+                                        <td>@Html.DisplayFor(model => item._product.ProName)</td>
+                                        <td>
+                                            @string.Format("{0:N0}", item._product.PriceReduce)<su>đ</su>
+                                        </td>
+                                        <td>
+                                            @using (Html.BeginForm("Update_Cart_Quantity", "ShoppingCart"))
+                                            {
+                                                <input type="hidden" value="@item._product.ProID" name="idPro" />
+                                                <input style="width: 150px; background-color: rgb(245, 245, 247); outline: none; text-align: center; border: none; border-radius: 10px;"
+                                                       type="number"
+                                                       value="@item._quantity"
+                                                       name="cartQuantity"
+                                                       />}
+                                        </td>
+                                        <td>
+                                            <a href="/ShoppingCart/RemoveCart/@item._product.ProID"><i style="color:gray" ; class="fa-solid fa-trash"></i></a>
+                                        </td>
+                                    </tr>
+                                }
+                                <tr style="margin:10px 0;">
+                                    <td><p></p></td>
+                                    <td></td>
+                                    <td style="padding:10px 0;" colspan="4"><a class="text-decoration-none" href="@Url.Action("ShowCart","ShoppingCart")" style="border:1px solid blue;padding:10px; border-radius:10px">Cập nhập giỏ hàng</a><a class="text-decoration-none" href="@Url.Action("Home","Products")" style="border: 1px solid blue; padding: 10px;margin-left:10px; border-radius:10px">Tiếp tục mua sắm</a></td>
+                                </tr>
+                        </table>
+}
+                else
+                {
+                    @Html.Partial("EmptyCart");
+                }
+                </div>
+                <div class="col-4 mb-4">
+                    <div class="col-12" style="background-color:white;border-radius:10px;padding:20px;">
+                        @{                
+                            decimal voucher = Convert.ToDecimal(Session["Voucher"]);
+                            var total1 = Model.Total_money() - voucher;
+
+                        }
+
+                        @using (Html.BeginForm("InputVoucher", "ShoppingCart"))
+                        {
+                            <div class="input-group mb-3 coupon">
+                                <input type="text" name="search" class="form-control" placeholder="Coupon Code" aria-label="Recipient's username" aria-describedby="basic-addon2" style="padding:0 3px;"maxlength = 10>
+                                <input class="input-group-text btn-success" id="basic-addon2" type="submit" value="Apply Coupon" style="background-color: rgb(0,101,204);color:white;text-align:center;font-size:13px" />
+                            </div>
+                            <p style="color: rgb(134,134,139) " class="total">Sub -Total: <span id="total" style="float:right;color:black; font-weight:bolder;">
+                                @string.Format("{0:N0}", @Model.Total_money())<sup class="text-decoration-underline">đ</sup></span></p>
+                            <p style="color: black; font-weight: bolder; border-bottom: 1px solid rgb(81,81,84);padding-bottom:20px; "
+                               class="total">Total: <span id="total1" style="float:right;font-size:18px; color: rgb(0,101,204); font-weight: bolder; ">@string.Format("{0:N0}", total1)
+                                <sup class="text-decoration-underline">đ</sup></span>
+                            </p>
+                        }
+                        @using (Html.BeginForm("CheckOut", "ShoppingCart"))
+                        {
+
+                            <p class="agree"><input type="checkbox" />I agree with the terms of service and I adhere to them unconditionally <span style="color: rgb(0,101,204);">terms of service</span>  of website</p>
+                            <br />
+                            <div class="checkout"><button style="border: none; background-color: rgb(0,101,204);color:white;font-size:20px" type="submit">Check Out</button></div>
+                            <br />
+                            <p style="color:red;margin-left:20px">Additional charges will be calculated when you proceed the payment</p>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+                            
+    </body>

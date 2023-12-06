@@ -1,0 +1,40 @@
+﻿@model ShopDunk.Models.Color
+
+@{
+    ViewBag.Title = "Delete";
+}
+<h1 style="color: darkgreen; padding: 10px;text-align:center; background-color: lawngreen; border-radius: 10px; border: 2px solid lawngreen">MÀU SẢN PHẨM</h1>
+
+
+<h3>Bạn thực sự muốn xóa?</h3>
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            TÊN MÀU
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ColorName)
+        </dd>
+
+        <dt>
+            MÃ MÀU
+        </dt>
+
+        <dd>
+            <div style="background-color:@Url.Content(Model.RGB); height: 20px; width: 20px; border-radius: 50%"></div>
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="col-md-offset-2 col-md-10">
+            <br />
+            <input style="border: 1px solid red; padding: 5px; text-decoration: none;border-radius:5px;color:black" type="submit" value="Xóa" class="bg-info.bg-gradient" />
+            <a class="bg-danger" href="@Url.Action("Index")" style="border: 1px solid red; padding: 5px; text-decoration: none;border-radius:5px;color:white">Danh sách</a>
+        </div>
+    }
+</div>

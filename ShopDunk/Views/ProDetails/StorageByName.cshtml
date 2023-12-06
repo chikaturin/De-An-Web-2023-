@@ -1,0 +1,33 @@
+﻿@model IEnumerable<ShopDunk.Models.ProDetail>
+
+@{
+    ViewBag.Title = "StorageByName";
+}
+
+<h2>StorageByName</h2>
+<div>
+    <span style="font-weight:bold">Tổng số lượng trong kho hàng:</span>@string.Format("{0:N0}", ViewBag.SumStorage)
+</div>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Product.ProName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RemainQuantity)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Product.ProName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RemainQuantity)
+            </td>
+        </tr>
+    }
+
+</table>

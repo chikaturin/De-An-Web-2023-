@@ -1,0 +1,32 @@
+﻿div > input {
+    height: 40px;
+    outline: none;
+    border: 1px solid rgb(235,235,235);
+    border-radius: 10px;
+    width: 81%;
+}
+
+.famale input {
+    margin-left: 10%;
+}
+
+.male input {
+    margin-left: 10px;
+}
+
+.date {
+    width: 27%;
+    height: 40px;
+    outline: none;
+    border: 1px solid rgb(235,235,235);
+    border-radius: 10px;
+    color: gray;
+}
+
+.note {
+    width: 78%;
+    font-size: 14px;
+    padding: 2%;
+    background: rgb(245,245,247);
+    border-radius: 10px;
+}

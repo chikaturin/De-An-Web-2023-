@@ -1,0 +1,85 @@
+﻿@model IEnumerable<ShopDunk.Models.Product>
+@{ 
+    ViewBag.Title = "UserProduct";
+    Layout = "~/Views/Shared/MasterLayout.cshtml";
+}
+<head>
+    <link rel="stylesheet" href="~/Content/Home.css" />
+    <script src="https://kit.fontawesome.com/3e21e075ef.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="slider container-fluid">
+        <button class="btn left"><i class="fa-solid fa-chevron-left"></i></button>
+        <button class="btn right"><i class="fa-solid fa-chevron-right"></i></button>
+        <img id="main_img" src="">
+        <div class="slide_img">
+            <img src="https://shopdunk.com/images/uploaded/banner/thang%209%202023/banner%20iphone%2015%20pro-2_PC.jpg" class="imgs">
+            <img src="https://shopdunk.com/images/uploaded/banner/thang%209%202023/banner%20iphone%2015-2_PC.jpg" class="imgs">
+            <img src="https://shopdunk.com/images/uploaded/banner/thang%209%202023/banner%20iphone%2014%20Pro%20Max%20T9_Banner%20PC.jpg" class="imgs">
+            <img src="https://shopdunk.com/images/uploaded/banner/thang%209%202023/banner%20ipad%20gen9%20T9_Banner%20PC.jpg" class="imgs">
+            <img src="https://shopdunk.com/images/uploaded/banner/thang%209%202023/banner%20watch%20T9_Banner%20PC.jpg" class="imgs">
+            <img src="https://shopdunk.com/images/uploaded/banner/thang%209%202023/banner%20macbook%20air%20t9_Banner%20PC.jpg" class="imgs">
+            <img src="https://shopdunk.com/images/uploaded/banner/Banner%20th%C3%A1ng%208/PC.png" class="imgs">
+            <img src="https://shopdunk.com/images/uploaded/banner/Banner%20th%C3%A1ng%208/banner%20apple%20pay_Banner%20PC.jpg" class="imgs">
+            <img src="https://shopdunk.com/images/uploaded/banner/Banner%20Web_SD_VN.png" class="imgs">
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <img class="col-4 g-3 img-fluid" src="~/img/img1_article.png" />
+            <img class="col-4 g-3 img-fluid" src="~/img/img2_article.png" />
+            <img class="col-4 g-3 img-fluid" src="~/img/img3_article.png" />
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+
+            @foreach (var categoryWithProducts in Model.GroupBy(p => p.Category))
+            {
+                <a class="text-decoration-none" href="@Url.Action("DetailPro", "Products", new {id=categoryWithProducts.Key.CatID})">
+                    <h3 class="text-center" style="color:black">@Html.DisplayFor(model => categoryWithProducts.Key.NameCate)</h3>
+                </a>
+
+                foreach (var pro in categoryWithProducts)
+                {
+                    <div class="equipment mx-auto col-xl-3 col-lg-4 col-sm-6 bg-white" style="width:320px;border-radius: 10px; margin: 15px 5px; padding: 20px 10px 0 10px; align-items: baseline;">
+                        <a class="row" href="@Url.Action("DetailProduct", "DetailProductVM", new { id = pro.ProID })">
+                            <img class="container img-fluid" src="@Url.Content(pro.ProImage)" style="width:250px;height:260px;" />
+                            <p class="name_equipment">@Html.DisplayFor(model => pro.ProName)</p>
+                            <p class="coin_of_equipment">
+                                <span style="color: rgb(0,102,204); font-weight: bold">
+                                    @string.Format("{0:N0}", pro.PriceReduce) <sup class="text-decoration-underline">đ</sup>
+                                </span>
+                                <del style="padding:0 2px 0 15px;">
+                                    @string.Format("{0:N0}", pro.Price) <sup >đ</sup>
+                                </del>
+                                -@Html.DisplayFor(model => pro.DiscountPercent)%
+                            </p>
+                        </a>
+                    </div>
+                }
+                <div class="justify-content-center cate justify-content-center d-flex"><a class="text-decoration-none hover_p" href="@Url.Action("UserProductDetail", "Products", new {id=categoryWithProducts.Key.CatID})">@Html.DisplayFor(model => categoryWithProducts.Key.NameCate)<i style="font-size:13px" class="fa-solid fa-chevron-right"></i></a></div>
+            }
+        </div>
+    </div>
+    <div class="News-boss container justify-content-center">
+        <div class="classify_news row">
+            <div class="news col-xl-4 col-lg-6 col-sm-12 border" style="background-color: white; border-radius:10px;padding:0; ">
+                <img style="height: 200px;width:100%; border-top-right-radius: 10px; border-top-left-radius: 10px;" src="https://shopdunk.com/images/thumbs/0018979_banner%20apple%20pay_Banner%20PC_1600.jpeg" />
+                <p style="font-weight: bolder; padding: 10px;">Safer and faster payments with Apple Pay</p>
+                <p style="padding:0 10px">09/08/2023</p>
+            </div>
+            <div class="news col-xl-4 col-lg-6 col-sm-12 border" style="background-color: white; border-radius: 10px; padding: 0; ">
+                <img style="height: 200px; width: 100%; border-top-right-radius: 10px; border-top-left-radius: 10px;" src="https://shopdunk.com/images/thumbs/0017835_0016369_226374_iPad_Pro_12.9_M2_2022_DSeifert_0001_1600_1600.jpeg" />
+                <p style="font-weight: bolder; padding: 10px;">3 ways to differentiate between fake and authentic iPad that not everyone knows</p>
+                <p style="padding:0 10px">08/08/2023</p>
+            </div>
+            <div class="news col-xl-4 col-lg-6 col-sm-12 border" style="background-color: white; border-radius: 10px; padding: 0; ">
+                <img style="height: 200px; width: 100%; border-top-right-radius: 10px; border-top-left-radius: 10px;" src="https://shopdunk.com/images/thumbs/0017836_0017030_thumbnail_1600_1600.jpeg" />
+                <p style="font-weight:bolder; padding:10px;">Does AirPods Have a Mic? Learn About the Microphone on AirPods</p>
+                <p style="padding:0 10px">24/05/2023</p>
+            </div>
+        </div>
+    </div>
+    <script src="~/Content/Slider.js"></script>
+</body>

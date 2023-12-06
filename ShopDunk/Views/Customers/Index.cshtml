@@ -1,0 +1,60 @@
+﻿@model IEnumerable<ShopDunk.Models.Customer>
+
+<h1 style="color: darkgreen; padding: 10px;text-align:center; background-color: lightblue; border-radius: 30px; border: 2px solid lawngreen">KHÁCH HÀNG</h1>
+<div class="container">
+    <div class="row">
+        <table class="table">
+            <tr>
+                <th>
+                    Số điện thoại
+                </th>
+                <th>
+                    Tên khách hàng
+                </th>
+                <th>
+                    Email khách hàng
+                </th>
+                <th>
+                    Địa chỉ
+                </th>
+                <th>
+                    Giới tính
+                </th>
+                <th>
+                    Ngày sinh
+                </th>
+                <th></th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CusPhone)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CusName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CusEmail)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Address)
+                    </td>
+                    <td>
+                        @{
+                            bool isMale = item.Gender ?? false;
+                            string displayValue = isMale ? "Nam" : "Nữ";
+                        }
+                        @displayValue
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateOfBirth)
+                    </td>
+                    <td>
+                        <span><a href="@Url.Action("Details", new { id = item.CusPhone })" style="border: 1px solid black; padding: 5px; text-decoration: none;border-radius:5px;color:black">Detail</a></span>
+                    </td>
+                </tr>
+             }
+            </table>
+    </div>
+</div>

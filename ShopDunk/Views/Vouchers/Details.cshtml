@@ -1,0 +1,42 @@
+﻿@model ShopDunk.Models.Voucher
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Voucher</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NameVoucher)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NameVoucher)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DiscountLevel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DiscountLevel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Expired_time)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Expired_time)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IDVoucher }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

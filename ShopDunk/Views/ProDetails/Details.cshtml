@@ -1,0 +1,127 @@
+﻿@model ShopDunk.Models.ProDetail
+
+@{
+    ViewBag.Title = "Details";
+}
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Sell_equipment</title>
+    <link rel="stylesheet" href="~/Content/Sell_Equipment.css" />
+    <script src="https://kit.fontawesome.com/3e21e075ef.js" crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <p style="padding: 0 80px; color: rgb(81,81,84)">Home > iPhone >  series >    iPhone 14 Pro Max 128GB </p>
+    <div class="container">
+        <div class="Layout-Equipment d-flex">
+            <div class="Show-equipment col-6">
+                <div class="image_pro"><img src="@Url.Content(Model.Product.ProImage)" /></div>
+            </div>
+            <div class="infor-equipment col-6">
+                <h2> @Html.DisplayFor(model => model.Product.ProName)</h2>
+                <div class="Evaluate">
+                    <div class="star">
+                        <div style="background-color:@Url.Content(Model.Color.RGB); height: 20px; width: 20px; border-radius: 50%"></div>
+                        <span style="padding: 0 30px; color: rgb(0,101,204)">@Html.DisplayFor(model => model.ViewQuantity) reviews | + Compare </span>
+                    </div>
+                    <select style=" width: 150px; height: 30px; padding: 0 10px;margin-left:70px; border-radius: 5px; border-color: rgb(235,235,235)">
+                        <option value="Please select">Please select</option>
+                        <option value="Northern of VN ">Northern of VN </option>
+                        <option value="Southern of VN">Southern of VN</option>
+                    </select>
+                </div>
+                <h2 style="color: rgb(0,101,204) ">26,150,000₫ <del style="color: rgb(153,153,153);font-size:20px;font-weight:100; padding:0 30px">34,990,000₫</del></h2>
+                <p style="font-size:15px">Storage</p>
+                <div class="Storage">
+                    <span style="border: 2px solid rgb(0,101,204)">128GB</span>
+                    <span>256GB</span>
+                    <span>512GB</span>
+                    <span>1TB</span>
+                </div>
+                <p style="font-size:15px;padding-top:15px;">Color</p>
+                <div class="Color">
+                    <img style="border: 2px solid rgb(0,101,204)" src="https://www.colorabout.com/images/color/rgb/75-73-76.jpg?v=1" />
+                    <img src="https://www.colorhexa.com/fae1bb.png" />
+                    <img src="https://www.colorabout.com/images/color/rgb/226-229-227.jpg?v=1" />
+                    <img src="https://www.colorhexa.com/5d576b.png" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <img style="width:100%;height:100vh" src="https://shopdunk.com/images/uploaded/banner/thang%209%202023/88a7eaf1ca161f484607.jpg" />
+</body>
+</html>
+
+@*<div>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.RemainQuantity)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.RemainQuantity)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.SoldQuantity)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.SoldQuantity)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ViewQuantity)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ViewQuantity)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ConnectNetwork)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ConnectNetwork)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Color.ColorName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Color.ColorName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Memory.NameMem)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Memory.NameMem)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Product.ProName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Product.ProName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Voucher.NameVoucher)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Voucher.NameVoucher)
+            </dd>
+
+        </dl>
+    </div>*@

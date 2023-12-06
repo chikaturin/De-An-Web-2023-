@@ -1,0 +1,9 @@
+﻿@model ShopDunk.Models.Order
+
+@{
+    ViewBag.Title = "Details";
+}
+    @Html.Action("PurchasesORDER", "ShoppingCart", new { id = Model.CusPhone})
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>

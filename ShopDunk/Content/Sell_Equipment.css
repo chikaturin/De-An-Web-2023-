@@ -1,0 +1,109 @@
+﻿body {
+    margin: 0;
+    width: 100%;
+    background-color: white;
+}
+.Layout-Equipment {
+    display:flex;
+    width:100%;
+}
+.Show-equipment {
+    top: 0;
+    position: sticky;
+    width: 50%;
+    height:fit-content;
+    margin: 10px 50px;
+}
+.image_pro {
+    background-color: rgb(245,245,247);
+    border-radius: 20px;
+    padding: 10px;
+    border-radius: 20px;
+}
+.image_pro img {
+    width: 100%;
+    border-radius: 20px;
+    padding: 30px;
+    background-color:white;
+}
+.slider-equipment img {
+    border-radius: 10px;
+    background-color: white;
+    padding: 2px 6px 2px 2px;
+    margin: 3px 0px;
+    width: 87px;
+    height: 60px;
+    border: 2px solid rgb(222,217,217);
+}
+.infor-equipment{
+    width:50%;
+}
+.Evaluate {
+    width:90%;
+    padding:10px;
+    display: flex;
+    border-bottom: 1px solid rgb(221,221,221);
+}
+.star {
+    padding: 5px 0;
+}
+.Storage {
+    padding-top:10px;
+    color: rgb(134,134,139);
+}
+.Storage span
+{
+    margin:0 15px 0 0;
+    border-radius: 10px;
+    padding: 10px;
+    border: 1px solid rgb(235,235,235);
+}
+.Color {
+    padding-top: 5px;
+    color: rgb(134,134,139);
+}
+.Color img{
+    padding:3px;
+    border:1px solid rgb(235,235,235); 
+    width:25px;
+    height:25px;
+    border-radius:50%;
+}
+.form{
+    margin:10px 0;
+}
+.fieldset1{
+    width:90%;
+}
+.fieldset1 input{
+    width:20px;
+    height:20px;
+}
+.fieldset1> span{
+    padding:4px 2px;
+    position:absolute;
+}
+.Buy{
+    width:100%;
+    margin-left:10px;
+}
+.Buy span {
+    font-size:14px;
+    color: rgb(128,128,128);
+    padding:3px 18px;
+    border: 1px solid rgb(128,128,128);
+    border-bottom:none;
+}
+.hotline {
+    width:95%;
+    border: 1px solid rgb(235,235,235);
+    padding:10px 0px ;
+    font-size:15px;
+}
+.hotline p i{
+    padding:0 5px;
+}
+.hotline p span{
+    font-weight:bolder;
+    color:rgb(0,126,219);
+}

@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <style>
+        .navbar:hover a {
+            background-color: transparent;
+        }
+    </style>
+    <nav class="navbar navbar-expand-sm  navbar-dark bg-dark">
+        <div class="container">
+            <a href="/Products/Home"><img src="https://static.ybox.vn/2022/6/6/1654932608793-275485044_5605380252823936_7679967744402318368_n.jpeg" / style="height:80px;width:100px; border-radius:15px"></a>
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class=" navbar-toggler d-sm-inline-flex">
+                <ul class="navbar-nav flex-grow-1">
+                    <li>@Html.ActionLink("Sản phẩm", "Index", "Products", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Chi tiết sản phẩm", "Index", "ProDetails", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Khách hàng", "Index", "Customers", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Quản trị", "Index", "AdminUsers", new { area = " " }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Ưu Đãi", "Index", "Vouchers", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Đặt Hàng", "Index", "Orders", new { area = "" }, new { @class = "nav-link" })</li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+
+
+</body>
+</html>
